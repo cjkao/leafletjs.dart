@@ -45,6 +45,9 @@ _initMap() {
   var crsEarth = crs.Earth;
   print(crsEarth.wrapLng);
   print('crs earth ${crsEarth.distance(latlngx, latlngx)}');
+  var crsEPSG = crs.EPSG900913;
+  print(crsEPSG.code);
+
 //  print("crs: $simple ${simple is crs.CrsSimple} ${simple.infinite}");
 // print(simple.infinite);
 

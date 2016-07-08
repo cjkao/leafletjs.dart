@@ -76,15 +76,26 @@ abstract class ICRS {
 ///
 /// move L.CRS to library cause Chrome error
 ///
+/// A simple CRS that maps longitude and latitude into `x` and `y` directly.
+/// May be used for maps of flat surfaces (e.g. game maps). Note that the `y`
+/// axis should still be inverted (going from bottom to top).
+///
 @JS("L.CRS.Simple")
 @anonymous
 class CrsSimple extends ICRS {
   external Transformation get transformation;
   external LonLat get projection;
-  external bool get infinite;
   external num distance(LatLng latlng1, LatLng latlng2);
 }
 
+/*
+ * @namespace CRS
+ * @crs L.CRS.Earth
+ *
+ * Serves as the base for CRS that are global such that they cover the earth.
+ * Can only be used as the base for other CRS and cannot be used directly,
+ * since it does not have a `code`, `projection` or `transformation`.
+ */
 @JS('L.CRS.Earth')
 @anonymous
 class CrsEarth extends ICRS {
@@ -93,8 +104,48 @@ class CrsEarth extends ICRS {
   external num distance(LatLng latlng1, LatLng latlng2);
 }
 
+/*
+ * @namespace CRS
+ * @crs L.CRS.EPSG3857
+ *
+ * The most common CRS for online maps, used by almost all free and commercial
+ * tile providers. Uses Spherical Mercator projection. Set in by default in
+ * Map's `crs` option.
+ */
+@JS('L.CRS.EPSG3857')
+@anonymous
+class CrsEPSG3857 extends CrsEarth {
+  external String get code; //: 'EPSG:3857',
+  external void set code(_); //: 'EPSG:3857',
+
+  external SphericalMercator get projection; //: L.Projection.SphericalMercator,
+
+  external Transformation get transformation; //: (function () {
+
+}
+
+@JS('L.CRS.EPSG900913')
+@anonymous
+class CrsEPSG900913 extends CrsEPSG3857 {}
+
+/*
+ * @namespace CRS
+ * @crs L.CRS.EPSG4326
+ *
+ * A common CRS among GIS enthusiasts. Uses simple Equirectangular projection.
+ */
+@JS('L.CRS.EPSG4326')
+@anonymous
+class CrsEPSG4326 extends CrsEarth {}
+
 @JS("L.CRS.Simple")
 external CrsSimple get Simple;
 
 @JS("L.CRS.Earth")
 external CrsEarth get Earth;
+
+@JS("L.CRS.EPSG3857")
+external CrsEPSG3857 get EPSG3857;
+
+@JS("L.CRS.EPSG900913")
+external CrsEPSG900913 get EPSG900913;
