@@ -3,6 +3,7 @@ import 'dart:html' hide Rectangle;
 import 'dart:async';
 import 'package:js/js.dart';
 import 'package:leafletjs/leafletjs.dart' as L;
+import 'package:leafletjs/src/crs.dart' as crs;
 
 main() async {
   _initMap();
@@ -30,11 +31,22 @@ _initMap() {
   var pbound = L.LonLat.bounds;
   var pbound2 = L.LonLat.bounds;
   print('${p} ${unP} ${pbound.getSize().x}');
-  L.SphericalMercator.R = 3;
+//  L.SphericalMercator.R = 3;
   var sp = L.SphericalMercator.project(latlngx);
+//  var crs = crs.CrsSimple;
 
-  //L.CRS crs = new L.CRS();
-  //print('${crs.infinite}');
+//    L.CRS.infinite = true;
+//  print('${L.CRS.infinite}');
+
+  var crsSimple = crs.Simple;
+  print(crsSimple.infinite);
+  print('crs scale ${crsSimple.scale(1)}');
+
+  var crsEarth = crs.Earth;
+  print(crsEarth.wrapLng);
+  print('crs earth ${crsEarth.distance(latlngx, latlngx)}');
+//  print("crs: $simple ${simple is crs.CrsSimple} ${simple.infinite}");
+// print(simple.infinite);
 
   ///  var projLat=p.project(latlngx);
 //  print("project $projLat")

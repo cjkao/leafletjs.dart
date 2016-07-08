@@ -19,3 +19,4 @@ export 'src/polyline.dart';
 export 'src/tile.layer.dart';
 export 'src/evented.dart';
 export 'src/projection.dart';
+//export 'src/crs.dart';
