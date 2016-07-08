@@ -8,7 +8,7 @@ import 'lat.lng.dart';
 import 'point.dart';
 import 'evented.dart';
 @JS("L.Map")
-class Map extends IEvented{
+class Map extends IEvented {
   external Map(String id, [MapOptions options]);
 
   ///
