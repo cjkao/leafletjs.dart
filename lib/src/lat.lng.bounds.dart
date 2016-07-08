@@ -103,4 +103,9 @@ class LatLngBounds {
   ///Returns true if the bounds are properly initialized.
   ///
   external bool isValid();
+
+  ///
+  /// Returns `true` if the rectangle overlaps the given bounds. Two bounds overlap if their intersection is an area.
+  ///
+  external bool overlaps(LatLngBounds bounds);
 }
