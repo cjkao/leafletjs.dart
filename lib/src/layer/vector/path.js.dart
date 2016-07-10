@@ -6,6 +6,10 @@ import 'dart:html' as html;
 import 'package:js/js.dart';
 import '../layer.dart';
 
+///
+/// An abstract class that contains options and constants shared between vector
+/// overlays (Polygon, Polyline, Circle). Do not use it directly. Extends `Layer`.
+////
 @JS('L.path')
 class Path extends Layer {
   ///  constructor

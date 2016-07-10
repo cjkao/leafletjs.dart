@@ -20,10 +20,14 @@ _initMap() {
   mopt.draggable = true;
   var marker = new Marker(new L.LatLng([10, 20]), mopt);
   _map.addLayer(marker);
-
   var cm = new CircleMarker(new L.LatLng(-10, 10));
   cm.addTo(_map);
-
+  //[-111.03, 41],[-111.04, 45],[-104.05, 45],[-104.05, 41]
+  var polygon = new Polygon(
+          [new L.LatLng(-113, 41), new L.LatLng(-110, 30), new L.LatLng(100, 45), new L.LatLng(-103, 40)],
+          new PolylineOptions()..color = 'red')
+      .addTo(_map);
+  polygon.bindPopup('hi');
   new Future.delayed(new Duration(seconds: 10), () => marker.remove());
   var clickfun = allowInterop((L.Event evt) {
     print('${evt.type}  ${evt.layerPoint.x} ');

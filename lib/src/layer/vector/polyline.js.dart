@@ -4,11 +4,50 @@ library leafletjs.polyline;
 import '../../map.dart' as L;
 import 'dart:html' as html;
 import 'package:js/js.dart';
+import '../../lat.lng.dart';
+import '../../lat.lng.bounds.dart';
+import 'path.js.dart';
+import '../layer.popup.js.dart';
 
+////
+///
+/// A class for drawing polyline overlays on a map. Extends `Path`.
+///
+/// @example
+///
+/// ```js
+/// // create a red polyline from an array of LatLng points
+/// var latlngs = [
+/// 	[-122.68, 45.51],
+/// 	[-122.43, 37.77],
+/// 	[-118.2, 34.04]
+/// ];
+///
+/// var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+///
+/// // zoom the map to the polyline
+/// map.fitBounds(polyline.getBounds());
+/// ```
+///
+/// You can also pass a multi-dimensional array to represent a `MultiPolyline` shape:
+///
+/// ```js
+/// // create a red polyline from an array of arrays of LatLng points
+/// var latlngs = [
+/// 	[[-122.68, 45.51],
+/// 	 [-122.43, 37.77],
+/// 	 [-118.2, 34.04]],
+/// 	[[-73.91, 40.78],
+/// 	 [-87.62, 41.83],
+/// 	 [-96.72, 32.76]]
+/// ];
+/// ```
 @JS('L.polyline')
-class Polyline {
+class Polyline extends Path {
+  Polyline.x() : this();
+
   ///  constructor
-  external Polyline([options]);
+  external Polyline([List<LatLng> latlngs, PolylineOptions options]);
 
   /// @method getLatLngs(): LatLng[]
   /// Returns an array of the points in the path, or nested arrays of points in case of multi-polyline.
@@ -41,7 +80,7 @@ class Polyline {
 
 @JS()
 @anonymous
-class PolylineOptions {
+class PolylineOptions extends PathOptions {
   /// default [smoothFactor] : 1.0
   external num get smoothFactor;
   external void set smoothFactor(num _);
