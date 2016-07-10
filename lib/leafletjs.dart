@@ -15,7 +15,6 @@ export 'src/path.options.dart';
 export 'src/point.dart';
 export 'src/bounds.dart';
 export 'src/polyline.dart';
-export 'src/tile.layer.dart';
 export 'src/evented.dart';
 export 'src/projection.dart';
 //export 'src/crs.dart';

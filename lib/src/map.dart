@@ -9,8 +9,9 @@ import 'lat.lng.dart';
 import 'point.dart';
 import 'evented.dart';
 import 'bounds.dart';
-import 'layer/layer.dart';
 import '../leafletjs.control.dart';
+import '../leafletjs.map.dart';
+import '../leafletjs.layer.dart';
 
 @JS("L.Map")
 class Map extends IEvented with IMapLayer {
@@ -274,6 +275,20 @@ class Map extends IEvented with IMapLayer {
   /// only exist when zoomControl is on
   ///
   external ControlZoom get zoomControl;
+
+  /// Box (shift-drag with mouse) zoom handler.
+  external MapBoxZoom get boxZoom;
+
+  //
+  /// @method flyTo(latlng: LatLng, zoom?: Number, options?: Zoom/Pan options): this
+  /// Sets the view of the map (geographical center and zoom) performing a smooth
+  /// pan-zoom animation.
+  external Map flyTo(LatLng latlng, [num zoom, ZoomPanOptions options]);
+
+  /// @method flyToBounds(bounds: LatLngBounds, options?: fitBounds options): this
+  /// Sets the view of the map with a smooth animation like [`flyTo`](#map-flyto),
+  /// but takes a bounds parameter like [`fitBounds`](#map-fitbounds).
+  external Map flyToBounds(LatLngBounds bounds, [options]);
 }
 
 @JS()
@@ -352,7 +367,74 @@ class MapOptions {
 
   /// from zoom control
   external bool get zoomControl;
-  external void set zoomControl(_);
+  external void set zoomControl(bool _);
+
+  ///box zoom
+  external bool get boxZoom;
+  external void set boxZoom(bool _);
+  // @option doubleClickZoom: Boolean|String = true
+  // Whether the map can be zoomed in by double clicking on it and
+  // zoomed out by double clicking while holding shift. If passed
+  // `'center'`, double-click zoom will zoom to the center of the
+  //  view regardless of where the mouse was.
+  external bool get doubleClickZoom;
+  external void set doubleClickZoom(bool _);
+
+  /// @option dragging: Boolean = true
+  /// Whether the map be draggable with mouse/touch or not.
+  external bool get dragging;
+  external void set dragging(bool _);
+
+  /// @option keyboard: Boolean = true
+  /// Makes the map focusable and allows users to navigate the map with keyboard
+  /// arrows and `+`/`-` keys.
+  external bool get keyboard; //: true,
+  external void set keyboard(bool _);
+
+  // @option keyboardPanDelta: Number = 80
+  // Amount of pixels to pan when pressing an arrow key.
+  external num get keyboardPanDelta; //h: 80
+  external void set keyboardPanDelta(num _);
+
+  // @section Mousewheel options
+  // @option scrollWheelZoom: Boolean|String = true
+  // Whether the map can be zoomed by using the mouse wheel. If passed `'center'`,
+  // it will zoom to the center of the view regardless of where the mouse was.
+  external bool get scrollWheelZoom; //: true,
+  external void set scrollWheelZoom(bool _);
+  // @option wheelDebounceTime: Number = 40
+  // Limits the rate at which a wheel can fire (in milliseconds). By default
+  // user can't zoom via wheel more often than once per 40 ms.
+  external num get wheelDebounceTime; //: 40,
+  external void set wheelDebounceTime(num _);
+  // @option wheelPxPerZoomLevel: Number = 60
+  // How many scroll pixels (as reported by [L.DomEvent.getWheelDelta](#domevent-getwheeldelta))
+  // mean a change of one full zoom level. Smaller values will make wheel-zooming
+  // faster (and vice versa).
+  external num get wheelPxPerZoomLevel; //: 60
+  external void set wheelPxPerZoomLevel(num _);
+
+  // @section Touch interaction options
+  // @option tap: Boolean = true
+  // Enables mobile hacks for supporting instant taps (fixing 200ms click
+  // delay on iOS/Android) and touch holds (fired as `contextmenu` events).
+  external bool get tap; //: true,
+  external void set tap(_);
+  // @option tapTolerance: Number = 15
+  // The max number of pixels a user can shift his finger during touch
+  // for it to be considered a valid tap.
+  external num get tapTolerance; //: 15
+  external void set tapTolerance(_); //: 15
+  // @option zoomAnimation: Boolean = true
+  // Whether the map zoom animation is enabled. By default it's enabled
+  // in all browsers that support CSS3 Transitions except Android.
+  external bool get zoomAnimation; //: true,
+  external void set zoomAnimation(bool _); //: true,
+
+  // @option zoomAnimationThreshold: Number = 4
+  // Won't animate zoom if the zoom difference exceeds this value.
+  external num get zoomAnimationThreshold; //: 4
+  external void set zoomAnimationThreshold(num _); //: 4
   external factory MapOptions(
       {crs,
       LatLng center,
@@ -368,7 +450,19 @@ class MapOptions {
       num zoomSnap,
       num zoomDelta,
       bool trackResize,
-      bool zoomControl});
+      bool zoomControl,
+      bool boxZoom,
+      bool doubleClickZoom,
+      bool dragging,
+      bool keyboard,
+      num keyboardPanDelta,
+      bool scrollWheelZoom,
+      num wheelDebounceTime,
+      num wheelPxPerZoomLevel,
+      bool tap,
+      num tapTolerance,
+      bool zoomAnimation,
+      num zoomAnimationThreshold});
 }
 
 class ZoomOptions {

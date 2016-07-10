@@ -7,6 +7,7 @@ import 'package:leafletjs/src/crs.dart' as crs;
 import 'dart:js';
 import 'package:leafletjs/leafletjs.layer.dart';
 import 'package:leafletjs/leafletjs.control.dart';
+import 'package:leafletjs/leafletjs.dom.dart';
 import 'dart:async';
 
 main() async {
@@ -27,13 +28,14 @@ _initMap() {
   cScale.addTo(_map);
   var cm = new CircleMarker(new L.LatLng(-10, 10));
   cm.addTo(_map);
+  var dragMark = new Draggable(marker);
   //[-111.03, 41],[-111.04, 45],[-104.05, 45],[-104.05, 41]
   var polygon = new Polygon(
           [new L.LatLng(-113, 41), new L.LatLng(-110, 30), new L.LatLng(100, 45), new L.LatLng(-103, 40)],
           new PolylineOptions()..color = 'red')
       .addTo(_map);
   polygon.bindPopup('hi');
-  new Future.delayed(new Duration(seconds: 10), () => marker.remove());
+  new Future.delayed(new Duration(seconds: 120), () => marker.remove());
   var clickfun = allowInterop((L.Event evt) {
     print('${evt.type}  ${evt.layerPoint.x} ');
     print(evt.containerPoint.x);
@@ -84,12 +86,12 @@ _initMap() {
   _map.on('click', clickfun);
 //  _map.off('click',clickfun);
 //  _map.once('click',clickfun);
-  new L.TileLayer(
+  new TileLayer(
           'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
-          new L.TileLayerOptions(
+          new TileLayerOptions(
+              maxZoom: 18,
               attribution:
                   'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-              maxZoom: 18,
               id: 'mapbox.streets',
               accessToken: accessToken))
       .addTo(_map);

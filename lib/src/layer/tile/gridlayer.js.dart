@@ -7,16 +7,16 @@ import 'package:js/js.dart';
 import '../../point.dart';
 import '../layer.dart';
 
-@JS('L.gridlayer')
+@JS('L.gridLayer')
 class GridLayer extends Layer {
   ///  constructor
   external GridLayer([GridLayerOptions options]);
 
-  external dynamic onAdd();
+  external void onAdd();
 
-  external dynamic beforeAdd(L.Map map);
+  external void beforeAdd(L.Map map);
 
-  external dynamic onRemove(L.Map map);
+  external void onRemove(L.Map map);
 
   /// @method bringToFront: this
   /// Brings the tile layer to the top of all tile layers.
@@ -86,10 +86,12 @@ class GridLayerOptions {
   external void set updateWhenZooming(bool _);
 
   /// default [updateInterval] : 200
+  ///	Tiles will not update more than once every `updateInterval` milliseconds when panning.
   external num get updateInterval;
   external void set updateInterval(num _);
 
   /// default [attribution] : null
+  // String to be shown in the attribution control, describes the layer data, e.g. "© Mapbox".
   external String get attribution;
   external void set attribution(String _);
 
@@ -106,8 +108,8 @@ class GridLayerOptions {
   external void set minZoom(num _);
 
   /// default [maxZoom] : undefined
-  external String get maxZoom;
-  external void set maxZoom(String _);
+  external num get maxZoom;
+  external void set maxZoom(num _);
 
   /// default [noWrap] : false
   external bool get noWrap;
@@ -135,7 +137,7 @@ class GridLayerOptions {
       num zIndex,
       String bounds,
       num minZoom,
-      String maxZoom,
+      num maxZoom,
       bool noWrap,
       String pane,
       String className,

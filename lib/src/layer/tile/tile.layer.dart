@@ -2,10 +2,10 @@
 library leafletjs.tile.layer;
 
 import "package:js/js.dart";
-import 'layer/layer.dart';
-import 'lat.lng.dart';
-import 'lat.lng.bounds.dart';
-import 'map.dart' as L;
+import '../layer.dart';
+import '../../lat.lng.dart';
+import '../../lat.lng.bounds.dart';
+import '../../map.dart' as L;
 
 @JS("L.tileLayer")
 class TileLayer extends Layer {

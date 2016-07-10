@@ -6,6 +6,7 @@ import 'dart:html' as html;
 import 'package:js/js.dart';
 
 import '../layer.dart';
+import 'gridlayer.js.dart';
 
 /*
  * @class TileLayer.WMS
@@ -24,10 +25,10 @@ import '../layer.dart';
  * });
  * ```
  */
-@JS('L.tilelayer')
-class TileLayer extends Layer {
+@JS('L.tileLayer')
+class TileLayer extends GridLayer {
   ///  constructor
-  external TileLayer([TileLayerOptions options]);
+  external TileLayer([String urlTemplate, TileLayerOptions options]);
 
   /// @method setUrl(url: String, noRedraw?: Boolean): this
   /// Updates the layer's URL template and redraws it (unless `noRedraw` is set to `true`).
@@ -47,12 +48,12 @@ class TileLayer extends Layer {
   /// Classes extending `TileLayer` can override this function to provide custom tile URL naming schemes.
   external String getTileUrl(Object coords);
 
-  external dynamic getTileSize();
+  //external num getTileSize();
 }
 
 @JS()
 @anonymous
-class TileLayerOptions {
+class TileLayerOptions extends GridLayerOptions {
   /// default [minZoom] : 0
   external num get minZoom;
   external void set minZoom(num _);
@@ -103,5 +104,19 @@ class TileLayerOptions {
       bool tms,
       bool zoomReverse,
       bool detectRetina,
-      bool crossOrigin});
+      bool crossOrigin,
+      num tileSize,
+      num opacity,
+      String updateWhenIdle,
+      bool updateWhenZooming,
+      num updateInterval,
+      String attribution,
+      num zIndex,
+      String bounds,
+      bool noWrap,
+      String pane,
+      String className,
+      num keepBuffer,
+      String id,
+      String accessToken});
 }

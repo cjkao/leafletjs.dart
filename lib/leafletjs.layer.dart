@@ -9,4 +9,8 @@ export 'src/layer/vector/circlemarker.js.dart';
 export 'src/layer/vector/polygon.js.dart';
 export 'src/layer/vector/polyline.js.dart';
 export 'src/layer/layer.popup.js.dart';
+export 'src/layer/tile/gridlayer.js.dart';
+export 'src/layer/tile/tilelayer.js.dart';
+export 'src/layer/tile/tilelayer.wms.js.dart';
+
 //export 'src/crs.dart';
