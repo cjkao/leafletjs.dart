@@ -6,6 +6,23 @@ import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'tilelayer.js.dart';
 
+////
+/// @class TileLayer.WMS
+/// @inherits TileLayer
+/// @aka L.TileLayer.WMS
+/// Used to display [WMS](https://en.wikipedia.org/wiki/Web_Map_Service) services as tile layers on the map. Extends `TileLayer`.
+///
+/// @example
+///
+/// ```js
+/// var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+/// 	layers: 'nexrad-n0r-900913',
+/// 	format: 'image/png',
+/// 	transparent: true,
+/// 	attribution: "Weather data © 2012 IEM Nexrad"
+/// });
+/// ```
+////
 @JS('L.tileLayer.wms')
 class TileLayerWMS extends TileLayer {
   ///  constructor

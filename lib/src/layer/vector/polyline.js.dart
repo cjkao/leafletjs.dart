@@ -7,7 +7,6 @@ import 'package:js/js.dart';
 import '../../lat.lng.dart';
 import '../../lat.lng.bounds.dart';
 import 'path.js.dart';
-import '../layer.popup.js.dart';
 
 ////
 ///
@@ -89,5 +88,20 @@ class PolylineOptions extends PathOptions {
   external bool get noClip;
   external void set noClip(bool _);
 
-  external factory PolylineOptions({num smoothFactor, bool noClip});
+  external factory PolylineOptions(
+      {num smoothFactor,
+      bool noClip,
+      bool stroke,
+      String color,
+      num weight,
+      num opacity,
+      String lineCap,
+      String lineJoin,
+      String dashArray,
+      String dashOffset,
+      bool fill,
+      String fillColor,
+      num fillOpacity,
+      String fillRule,
+      bool interactive});
 }

@@ -86,7 +86,7 @@ _initMap() {
   _map.on('click', clickfun);
 //  _map.off('click',clickfun);
 //  _map.once('click',clickfun);
-  new TileLayer(
+  var tileLayer = new TileLayer(
           'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
           new TileLayerOptions(
               maxZoom: 18,
@@ -95,4 +95,6 @@ _initMap() {
               id: 'mapbox.streets',
               accessToken: accessToken))
       .addTo(_map);
+  var pop = new Popup();
+  pop.setContent('htmlContent').setLatLng(new L.LatLng(10, 30)).addTo(_map);
 }

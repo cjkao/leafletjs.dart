@@ -317,7 +317,8 @@ class MapOptions {
   // @option renderer: Renderer = *
   // The default method for drawing vector layers on the map. `L.SVG`
   // or `L.Canvas` by default depending on browser support.
-  external get renderer;
+  external Renderer get renderer;
+  external void set renderer(Renderer _);
 
   // @section Animation Options
   // @option fadeAnimation: Boolean = true
@@ -443,7 +444,7 @@ class MapOptions {
       num minZoom,
       num maxZoom,
       LatLngBounds maxBounds,
-      renderer,
+      Renderer renderer,
       bool fadeAnimation,
       bool markerZoomAnimation,
       num transform3DLimit,

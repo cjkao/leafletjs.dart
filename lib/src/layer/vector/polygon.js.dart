@@ -7,7 +7,6 @@ import 'package:js/js.dart';
 import 'polyline.js.dart';
 import '../../point.dart';
 import '../../lat.lng.dart';
-import '../layer.popup.js.dart';
 
 ///
 /// @class Polygon
@@ -67,10 +66,25 @@ class Polygon extends Polyline {
 
 @JS()
 @anonymous
-class PolygonOptions {
+class PolygonOptions extends PolylineOptions {
   /// default [fill] : true
   external bool get fill;
   external void set fill(bool _);
 
-  external factory PolygonOptions({bool fill});
+  external factory PolygonOptions(
+      {num smoothFactor,
+      bool noClip,
+      bool stroke,
+      String color,
+      num weight,
+      num opacity,
+      String lineCap,
+      String lineJoin,
+      String dashArray,
+      String dashOffset,
+      bool fill,
+      String fillColor,
+      num fillOpacity,
+      String fillRule,
+      bool interactive});
 }

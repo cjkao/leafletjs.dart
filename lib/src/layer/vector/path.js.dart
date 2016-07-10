@@ -111,7 +111,7 @@ class PathOptions {
       String fillColor,
       num fillOpacity,
       String fillRule,
-      String
+      bool interactive
 
       /// className,bool interactive
       });
