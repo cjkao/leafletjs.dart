@@ -30,9 +30,9 @@ class ImageOverlay extends Layer {
 // geographical bounds it is tied to.
   external ImageOverlay(String imageUrl, List<LatLngBounds> latlngBounds, [ImageOverlayOptions options]);
 
-  external dynamic onAdd();
+  external void onAdd();
 
-  external dynamic onRemove();
+  external void onRemove();
 
   /// @method setOpacity(): this
   /// Sets the opacity of the overlay.

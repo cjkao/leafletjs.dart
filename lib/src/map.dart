@@ -10,6 +10,7 @@ import 'point.dart';
 import 'evented.dart';
 import 'bounds.dart';
 import 'layer/layer.dart';
+import '../leafletjs.control.dart';
 
 @JS("L.Map")
 class Map extends IEvented with IMapLayer {
@@ -262,6 +263,17 @@ class Map extends IEvented with IMapLayer {
   ///Pans the map to the closest view that would lie inside the given bounds (if it's not already), controlling the animation using the options specific, if any.
   ///
   external Map panInsideBounds(LatLngBounds bounds, [PanOptions options]);
+
+  ///
+  /// Control area
+  // @method addControl(control: Control): this
+  // Adds the given control to the map
+  external Map addControl(Control control);
+
+  ///
+  /// only exist when zoomControl is on
+  ///
+  external ControlZoom get zoomControl;
 }
 
 @JS()
@@ -336,6 +348,11 @@ class MapOptions {
   external bool get trackResize;
   external void set trackResize(_);
 
+  /// Control area
+
+  /// from zoom control
+  external bool get zoomControl;
+  external void set zoomControl(_);
   external factory MapOptions(
       {crs,
       LatLng center,
@@ -350,7 +367,8 @@ class MapOptions {
       num transform3DLimit,
       num zoomSnap,
       num zoomDelta,
-      bool trackResize});
+      bool trackResize,
+      bool zoomControl});
 }
 
 class ZoomOptions {

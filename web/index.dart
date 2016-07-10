@@ -6,6 +6,7 @@ import 'package:leafletjs/leafletjs.dart' as L;
 import 'package:leafletjs/src/crs.dart' as crs;
 import 'dart:js';
 import 'package:leafletjs/leafletjs.layer.dart';
+import 'package:leafletjs/leafletjs.control.dart';
 import 'dart:async';
 
 main() async {
@@ -14,12 +15,16 @@ main() async {
 
 _initMap() {
   var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
-  var _map = new L.Map("map", new L.MapOptions(center: new L.LatLng(60.222296, 24.929713), zoom: 11));
+  var _map =
+      new L.Map("map", new L.MapOptions(center: new L.LatLng(60.222296, 24.929713), zoom: 11, zoomControl: true));
+  print(_map.zoomControl);
   context['mmm'] = _map;
   var mopt = new MarkerOptions();
   mopt.draggable = true;
   var marker = new Marker(new L.LatLng([10, 20]), mopt);
   _map.addLayer(marker);
+  var cScale = new ControlScale();
+  cScale.addTo(_map);
   var cm = new CircleMarker(new L.LatLng(-10, 10));
   cm.addTo(_map);
   //[-111.03, 41],[-111.04, 45],[-104.05, 45],[-104.05, 41]
@@ -50,7 +55,6 @@ _initMap() {
 //  L.SphericalMercator.R = 3;
   var sp = L.SphericalMercator.project(latlngx);
 //  var crs = crs.CrsSimple;
-
 //    L.CRS.infinite = true;
 //  print('${L.CRS.infinite}');
 
