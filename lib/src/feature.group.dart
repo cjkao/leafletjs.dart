@@ -2,17 +2,16 @@
 library leafletjs.feature.group;
 
 import "package:js/js.dart";
-import 'ilayer.dart';
+import 'layer/layer.dart';
 import 'lat.lng.bounds.dart';
 import 'path.options.dart';
 
 @JS("L.featureGroup")
 class FeatureGroup {
-
   ///
   /// Create a layer group, optionally given an initial set of layers.
   ///
-  external factory FeatureGroup([List<ILayer> layers]);
+  external factory FeatureGroup([List<Layer> layers]);
 
   ///
   ///Returns the LatLngBounds of the Feature Group (created from bounds and coordinates of its children).

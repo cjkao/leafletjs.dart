@@ -4,15 +4,15 @@ library leafletjs.map;
 import 'dart:html' as html;
 import 'crs.dart' as crs;
 import "package:js/js.dart";
-import 'ilayer.dart';
 import 'lat.lng.bounds.dart';
 import 'lat.lng.dart';
 import 'point.dart';
 import 'evented.dart';
 import 'bounds.dart';
+import 'layer/layer.dart';
 
 @JS("L.Map")
-class Map extends IEvented {
+class Map extends IEvented with IMapLayer {
   external Map(String id, [MapOptions options]);
   // @method setView(center: LatLnt, zoom: Number, options?: Zoom/Pan options): this
   // Sets the view of the map (geographical center and zoom) with the given
@@ -183,10 +183,80 @@ class Map extends IEvented {
   // [`getZoomScale`](#map-getZoomScale).
   external num getScaleZoom(num scale, num fromZoom);
 
-  ///
-  ///Removes the given layer from the map.
-  ///
-  external Map removeLayer(ILayer layer);
+  // @method project(latlng: LatLng, zoom: Number): Point
+  // Projects a geographical coordinate `LatLng` according to the projection
+  // of the map's CRS, then scales it according to `zoom` and the CRS's
+  // `Transformation`. The result is pixel coordinate relative to
+  // the CRS origin.
+  external Point project(LatLng latlng, num zoom);
+
+  // @method unproject(point: Point, zoom: Number): LatLng
+  // Inverse of [`project`](#map-project).
+  external LatLng unproject(Point point, num zoom);
+
+  // @method layerPointToLatLng(point: Point): LatLng
+  // Given a pixel coordinate relative to the [origin pixel](#map-getpixelorigin),
+  // returns the corresponding geographical coordinate (for the current zoom level).
+  external LatLng layerPointToLatLng(Point point);
+
+  // @method latLngToLayerPoint(latlng: LatLng): Point
+  // Given a geographical coordinate, returns the corresponding pixel coordinate
+  // relative to the [origin pixel](#map-getpixelorigin).
+  external Point latLngToLayerPoint(LatLng latlng);
+
+  // @method wrapLatLng(latlng: LatLng): LatLng
+  // Returns a `LatLng` where `lat` and `lng` has been wrapped according to the
+  // map's CRS's `wrapLat` and `wrapLng` properties, if they are outside the
+  // CRS's bounds.
+  // By default this means longitude is wrapped around the dateline so its
+  // value is between -180 and +180 degrees.
+  external LatLng wrapLatLng(LatLng latlng);
+
+  // @method distance(latlng1: LatLng, latlng2: LatLng): Number
+  // Returns the distance between two geographical coordinates according to
+  // the map's CRS. By default this measures distance in meters.
+  external num distance(LatLng latlng1, LatLng latlng2);
+
+  // @method containerPointToLayerPoint(point: Point): Point
+  // Given a pixel coordinate relative to the map container, returns the corresponding
+  // pixel coordinate relative to the [origin pixel](#map-getpixelorigin).
+  external Point containerPointToLayerPoint(Point point); // (Point)
+
+  // @method layerPointToContainerPoint(point: Point): Point
+  // Given a pixel coordinate relative to the [origin pixel](#map-getpixelorigin),
+  // returns the corresponding pixel coordinate relative to the map container.
+  external Point layerPointToContainerPoint(Point point); // (Point)
+
+  // @method containerPointToLatLng(point: Point): Point
+  // Given a pixel coordinate relative to the map container, returns
+  // the corresponding geographical coordinate (for the current zoom level).
+  external Point containerPointToLatLng(Point point);
+
+  // @method latLngToContainerPoint(latlng: LatLng): Point
+  // Given a geographical coordinate, returns the corresponding pixel coordinate
+  // relative to the map container.
+  external Point latLngToContainerPoint(LatLng latlng);
+
+  // @method mouseEventToContainerPoint(ev: MouseEvent): Point
+  // Given a MouseEvent object, returns the pixel coordinate relative to the
+  // map container where the event took place.
+  external Point mouseEventToContainerPoint(html.MouseEvent e);
+
+  // @method mouseEventToLayerPoint(ev: MouseEvent): Point
+  // Given a MouseEvent object, returns the pixel coordinate relative to
+  // the [origin pixel](#map-getpixelorigin) where the event took place.
+  external Point mouseEventToLayerPoint(html.MouseEvent e);
+
+  // @method mouseEventToLatLng(ev: MouseEvent): LatLng
+  // Given a MouseEvent object, returns geographical coordinate where the
+  // event took place.
+  external LatLng mouseEventToLatLng(html.MouseEvent e); // (MouseEvent)
+
+  // @method whenReady(fn: Function, context?: Object): this
+  // Runs the given function `fn` when the map gets initialized with
+  // a view (center and zoom) and at least one layer, or immediately
+  // if it's already initialized, optionally passing a function context.
+  external Map whenReady(Function callback, [context]);
 
   ///
   ///Pans the map to the closest view that would lie inside the given bounds (if it's not already), controlling the animation using the options specific, if any.
@@ -203,7 +273,7 @@ class MapOptions {
   external void set center(_);
   external num get zoom;
   external void set zoom(_);
-  external List<ILayer> get layers;
+  external List<Layer> get layers;
   external num get minZoom;
   external void set minZoom(_);
   external num get maxZoom;
@@ -270,7 +340,7 @@ class MapOptions {
       {crs,
       LatLng center,
       num zoom,
-      List<ILayer> layers,
+      List<Layer> layers,
       num minZoom,
       num maxZoom,
       LatLngBounds maxBounds,

@@ -2,15 +2,15 @@
 library leafletjs.layer.group;
 
 import "package:js/js.dart";
-import 'ilayer.dart';
 import 'map.dart' as L;
+import 'layer/layer.dart';
 
 @JS("L.layerGroup")
-class LayerGroup extends ILayer {
+class LayerGroup extends Layer {
   ///
   ///Create a layer group, optionally given an initial set of layers.
   ///
-  external factory LayerGroup([List<ILayer> layers]);
+  external factory LayerGroup([List<Layer> layers]);
 
   ///
   ///Adds the group of layers to the map.
@@ -20,7 +20,7 @@ class LayerGroup extends ILayer {
   ///
   ///Adds a given layer to the group.
   ///
-  external LayerGroup addLayer(ILayer layer);
+  external LayerGroup addLayer(Layer layer);
 
   ///
   ///Removes a given layer from the group.
@@ -30,17 +30,17 @@ class LayerGroup extends ILayer {
   ///
   ///Returns true if the given layer is currently added to the group.
   ///
-  external bool hasLayer(ILayer layer);
+  external bool hasLayer(Layer layer);
 
   ///
   ///Returns the layer with the given id.
   ///
-  external ILayer getLayer(String id);
+  external Layer getLayer(String id);
 
   ///
   ///Returns an array of all the layers added to the group.
   ///
-  external List<ILayer> getLayers();
+  external List<Layer> getLayers();
 
   ///
   ///Removes all the layers from the group.

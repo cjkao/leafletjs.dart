@@ -4,6 +4,9 @@ import 'dart:async';
 import 'package:js/js.dart';
 import 'package:leafletjs/leafletjs.dart' as L;
 import 'package:leafletjs/src/crs.dart' as crs;
+import 'dart:js';
+import 'package:leafletjs/leafletjs.layer.dart';
+import 'dart:async';
 
 main() async {
   _initMap();
@@ -11,8 +14,13 @@ main() async {
 
 _initMap() {
   var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
-
   var _map = new L.Map("map", new L.MapOptions(center: new L.LatLng(60.222296, 24.929713), zoom: 11));
+  context['mmm'] = _map;
+  var mopt = new MarkerOptions();
+  mopt.draggable = true;
+  var marker = new Marker(new L.LatLng([10, 20]), mopt);
+  _map.addLayer(marker);
+  new Future.delayed(new Duration(seconds: 10), () => marker.remove());
   var clickfun = allowInterop((L.Event evt) {
     print('${evt.type}  ${evt.layerPoint.x} ');
     print(evt.containerPoint.x);

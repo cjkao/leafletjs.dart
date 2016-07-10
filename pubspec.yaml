@@ -10,3 +10,4 @@ dependencies:
   func: ^0.1.0
 dev_dependencies:
   browser: ^0.10.0+2
+  parsejs: ^1.1.0

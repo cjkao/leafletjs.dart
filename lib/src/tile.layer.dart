@@ -2,13 +2,13 @@
 library leafletjs.tile.layer;
 
 import "package:js/js.dart";
-import 'ilayer.dart';
+import 'layer/layer.dart';
 import 'lat.lng.dart';
 import 'lat.lng.bounds.dart';
 import 'map.dart' as L;
 
 @JS("L.tileLayer")
-class TileLayer extends ILayer {
+class TileLayer extends Layer {
   external TileLayer(String urlTemplate, [TileLayerOptions options]);
 
   ///
@@ -47,32 +47,29 @@ class TileLayer extends ILayer {
   external TileLayer update();
 }
 
-
 @JS()
 @anonymous
 class TileLayerOptions {
-
-  external factory TileLayerOptions({
-  String id,
-  String accessToken,
-  num minZoom,
-  num maxZoom,
-  num maxNativeZoom,
-  num tileSize,
-  List<String> subdomains,
-  String errorTileUrl,
-  String attribution,
-  bool tms,
-  bool continuousWorld,
-  bool noWrap,
-  num zoomOffset,
-  bool zoomReverse,
-  num opacity,
-  num zIndex,
-  bool unloadInvisibleTiles,
-  bool updateWhenIdle,
-  bool detectRetina,
-  bool reuseTiles,
-  LatLngBounds bounds
-  });
+  external factory TileLayerOptions(
+      {String id,
+      String accessToken,
+      num minZoom,
+      num maxZoom,
+      num maxNativeZoom,
+      num tileSize,
+      List<String> subdomains,
+      String errorTileUrl,
+      String attribution,
+      bool tms,
+      bool continuousWorld,
+      bool noWrap,
+      num zoomOffset,
+      bool zoomReverse,
+      num opacity,
+      num zIndex,
+      bool unloadInvisibleTiles,
+      bool updateWhenIdle,
+      bool detectRetina,
+      bool reuseTiles,
+      LatLngBounds bounds});
 }
