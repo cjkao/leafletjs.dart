@@ -20,6 +20,10 @@ _initMap() {
   mopt.draggable = true;
   var marker = new Marker(new L.LatLng([10, 20]), mopt);
   _map.addLayer(marker);
+
+  var cm = new CircleMarker(new L.LatLng(-10, 10));
+  cm.addTo(_map);
+
   new Future.delayed(new Duration(seconds: 10), () => marker.remove());
   var clickfun = allowInterop((L.Event evt) {
     print('${evt.type}  ${evt.layerPoint.x} ');
