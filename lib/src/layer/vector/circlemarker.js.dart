@@ -10,7 +10,8 @@ import 'path.js.dart';
 @JS('L.circleMarker')
 class CircleMarker extends Path {
   ///  constructor
-  external CircleMarker(LatLng latlng, [CircleMarkerOptions options]);
+  /// latlng is not optional
+  external CircleMarker([LatLng latlng, CircleMarkerOptions options]);
 
   /// @method setLatLng(latLng: LatLng): this
   /// Sets the position of a circle marker to a new location.
@@ -33,7 +34,7 @@ class CircleMarker extends Path {
 
 @JS()
 @anonymous
-class CircleMarkerOptions {
+class CircleMarkerOptions extends PathOptions {
   /// default [fill] : true
   external bool get fill;
   external void set fill(bool _);
@@ -42,5 +43,19 @@ class CircleMarkerOptions {
   external num get radius;
   external void set radius(num _);
 
-  external factory CircleMarkerOptions({bool fill, num radius});
+  external factory CircleMarkerOptions(
+      {num radius,
+      bool stroke,
+      String color,
+      num weight,
+      num opacity,
+      String lineCap,
+      String lineJoin,
+      String dashArray,
+      String dashOffset,
+      bool fill,
+      String fillColor,
+      num fillOpacity,
+      String fillRule,
+      bool interactive});
 }

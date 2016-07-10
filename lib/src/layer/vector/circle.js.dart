@@ -5,11 +5,20 @@ import '../../map.dart' as L;
 import 'dart:html' as html;
 import 'package:js/js.dart';
 import '../../lat.lng.bounds.dart';
+import 'circlemarker.js.dart';
+import '../../lat.lng.dart';
 
 @JS('L.circle')
-class Circle {
+class Circle extends CircleMarker {
   ///  constructor
-  external Circle([options]);
+  // @factory L.circle(latlng: LatLng, options?: Circle options)
+  // Instantiates a circle object given a geographical point, and an options object
+  // which contains the circle radius.
+  // @alternative
+  // @factory L.circle(latlng: LatLng, radius: Number, options?: Circle options)
+  // Obsolete way of instantiating a circle, for compatibility with 0.7.x code.
+  // Do not use in new applications or plugins.
+  external Circle(LatLng latlng, [CircleMarkerOptions options]);
 
   /// @method setRadius(radius: Number): this
   /// Sets the radius of a circle. Units are in meters.

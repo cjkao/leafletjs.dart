@@ -9,6 +9,7 @@ import 'package:leafletjs/leafletjs.layer.dart';
 import 'package:leafletjs/leafletjs.control.dart';
 import 'package:leafletjs/leafletjs.dom.dart';
 import 'dart:async';
+import 'dart:convert';
 
 main() async {
   _initMap();
@@ -23,12 +24,14 @@ _initMap() {
   var mopt = new MarkerOptions();
   mopt.draggable = true;
   var marker = new Marker(new L.LatLng([10, 20]), mopt);
+  marker.bindPopup('hi');
   _map.addLayer(marker);
   var cScale = new ControlScale();
   cScale.addTo(_map);
   var cm = new CircleMarker(new L.LatLng(-10, 10));
   cm.addTo(_map);
-  var dragMark = new Draggable(marker);
+  var mGeoJSON = marker.toGeoJSON();
+  print(mGeoJSON);
   //[-111.03, 41],[-111.04, 45],[-104.05, 45],[-104.05, 41]
   var polygon = new Polygon(
           [new L.LatLng(-113, 41), new L.LatLng(-110, 30), new L.LatLng(100, 45), new L.LatLng(-103, 40)],
@@ -97,4 +100,11 @@ _initMap() {
       .addTo(_map);
   var pop = new Popup();
   pop.setContent('htmlContent').setLatLng(new L.LatLng(10, 30)).addTo(_map);
+  var myIcon = new DivIcon(new DivIconOptions(className: 'my-div-icon'));
+//  var defIcon = getDefaultIcon();
+  var opt = myIcon.options as DivIconOptions;
+  print(opt.className);
+//  var defIconOpt = defIcon.options as IconOptions;
+//  print(defIconOpt);
+  new Marker(new L.LatLng(50.505, 30.57), new MarkerOptions(icon: myIcon)).addTo(_map);
 }

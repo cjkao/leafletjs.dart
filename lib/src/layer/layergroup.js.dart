@@ -63,4 +63,9 @@ class LayerGroup extends Layer {
   /// @method getLayerId(layer: Layer): Number
   /// Returns the internal ID for a layer
   external num getLayerId(Layer layer);
+
+  ///
+  ///Returns a GeoJSON representation of the layer group (GeoJSON FeatureCollection).
+  ///
+  external dynamic toGeoJSON();
 }

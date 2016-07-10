@@ -7,7 +7,7 @@ import 'package:js/js.dart';
 import 'layergroup.js.dart';
 import 'layer.dart';
 import '../lat.lng.bounds.dart';
-import '../path.options.dart';
+import 'vector/path.js.dart';
 
 ////
 /// @class FeatureGroup
@@ -25,15 +25,15 @@ import '../path.options.dart';
 /// 	.addTo(map);
 /// ```
 ////
-@JS('L.featuregroup')
+@JS('L.featureGroup')
 class FeatureGroup extends LayerGroup {
   // @factory L.featureGroup(layers: Layer[])
   ///  constructor,
   external FeatureGroup([List<Layer> layers]);
 
-  external dynamic addLayer(layer);
+  external dynamic addLayer(Layer layer);
 
-  external dynamic removeLayer(layer);
+  external dynamic removeLayer(Layer layer);
 
   /// @method setStyle(style: Path options): this
   /// Sets the given path options to each layer of the group that has a `setStyle` method.

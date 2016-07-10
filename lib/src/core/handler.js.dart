@@ -4,9 +4,10 @@ library leafletjs.handler;
 import '../map.dart' as L;
 import 'dart:html' as html;
 import 'package:js/js.dart';
+import 'class.dart';
 
 @JS('L.handler')
-class Handler {
+class Handler extends IClass {
   ///  constructor
   external Handler([L.Map map]);
 

@@ -5,10 +5,11 @@ import '../../map.dart' as L;
 import '../../lat.lng.dart';
 import 'dart:html' as html;
 import 'package:js/js.dart';
-import 'icon.dart';
+import 'icon.js.dart';
+import '../layer.dart';
 
 @JS('L.marker')
-class Marker {
+class Marker extends Layer {
   ///
   ///Instantiates a Marker object given a geographical point and optionally an options object.
   ///
@@ -42,6 +43,7 @@ class Marker {
   /// @method setOpacity(opacity: Number): this
   /// Changes the opacity of the marker.
   external Marker setOpacity(num opacity);
+  external Object toGeoJSON();
 }
 
 @JS()
@@ -50,8 +52,8 @@ class MarkerOptions {
   /// 1. @option icon: Icon = *
   /// 1. Icon class to use for rendering the marker. See [Icon documentation](#L.Icon) for details on how to customize the marker icon. Set to new `L.Icon.Default()` by default.
   /// 1. default [icon] : new L.Icon.Default()
-  external String get icon;
-  external void set icon(String _);
+  external Icon get icon;
+  external void set icon(Icon _);
 
   ///
   /// Option inherited from "Interactive layer" abstract class
@@ -123,7 +125,7 @@ class MarkerOptions {
   external void set nonBubblingEvents(List<String> _);
 
   external factory MarkerOptions(
-      {String icon,
+      {Icon icon,
       bool interactive,
       bool draggable,
       bool keyboard,

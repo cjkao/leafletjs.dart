@@ -3,11 +3,11 @@ library leafletjs.div.icon;
 
 import "package:js/js.dart";
 import '../../point.dart';
-import 'icon.dart';
+import 'icon.js.dart';
 
 @JS()
 @anonymous
-class DivIconOptions {
+class DivIconOptions extends IconOptions {
   external List<num> get iconSize; //: [12, 12], // also can be set through CSS
   external void set iconSize(List<num> _);
 
@@ -22,7 +22,19 @@ class DivIconOptions {
   external String get className; //: 'leaflet-div-icon'
   external void set className(String _);
 
-  external factory DivIconOptions({List iconSize, bool html, Point bgPos, String className});
+  external factory DivIconOptions(
+      {bool html,
+      Point bgPos,
+      String iconUrl,
+      String iconRetinaUrl,
+      List<num> iconSize,
+      Point iconAnchor,
+      String shadowUrl,
+      String shadowRetinaUrl,
+      Point shadowSize,
+      Point shadowAnchor,
+      Point popupAnchor,
+      String className});
 }
 
 /*
@@ -43,10 +55,8 @@ class DivIconOptions {
  *
  * By default, it has a 'leaflet-div-icon' CSS class and is styled as a little white square with a shadow.
  */
-@JS('L.DivIcon')
-class DivIcon {
-  external DivIcon createIcon(DivIcon oldIcon); //: function (oldIcon) {
-  external void createShadow(); //: function () {
+@JS('L.divIcon')
+class DivIcon extends Icon {
 // Creates a `DivIcon` instance with the given options.
   external DivIcon(DivIconOptions options);
 }

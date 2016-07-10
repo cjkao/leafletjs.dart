@@ -5,9 +5,14 @@ import '../../map.dart';
 import 'dart:html' as html;
 import 'package:js/js.dart';
 import '../../point.dart';
+import 'dart:js';
+import '../../core/class.dart';
+
+///not compitable
+Icon getDefaultIcon() => new JsObject(context['L']['Icon']['Default'], []) as Icon;
 
 @JS('L.icon')
-class Icon {
+class Icon extends IClass {
   ///  constructor
   external Icon([IconOptions options]);
 
@@ -64,8 +69,8 @@ class IconOptions {
   external void set iconUrl(String _);
   external String get iconRetinaUrl;
   external void set iconRetinaUrl(String _);
-  external Point get iconSize;
-  external void set iconSize(Point _);
+  external List<num> get iconSize;
+  external void set iconSize(List<num> _);
   external Point get iconAnchor;
   external void set iconAnchor(Point _);
   external String get shadowUrl;
@@ -87,7 +92,7 @@ class IconOptions {
   external factory IconOptions(
       {String iconUrl,
       String iconRetinaUrl,
-      Point iconSize,
+      List<num> iconSize,
       Point iconAnchor,
       String shadowUrl,
       String shadowRetinaUrl,
