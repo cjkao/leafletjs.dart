@@ -2,7 +2,7 @@
 library leafletjs.div.icon;
 
 import "package:js/js.dart";
-import '../../point.dart';
+import '../../geometry/point.dart';
 import 'icon.js.dart';
 
 @JS()
@@ -12,8 +12,8 @@ class DivIconOptions extends IconOptions {
   external void set iconSize(List<num> _);
 
   /// Custom HTML code to put inside the div element, empty by default.
-  external bool get html;
-  external void set html(bool _);
+  external String get html;
+  external void set html(String _);
 
   // @option bgPos: Point = [0, 0]
   // Optional relative position of the background, in pixels
@@ -23,7 +23,7 @@ class DivIconOptions extends IconOptions {
   external void set className(String _);
 
   external factory DivIconOptions(
-      {bool html,
+      {String html,
       Point bgPos,
       String iconUrl,
       String iconRetinaUrl,
@@ -37,24 +37,24 @@ class DivIconOptions extends IconOptions {
       String className});
 }
 
-/*
- * @class DivIcon
- * @aka L.DivIcon
- * @inherits Icon
- *
- * Represents a lightweight icon for markers that uses a simple `<div>`
- * element instead of an image. Inherits from `Icon` but ignores the `iconUrl` and shadow options.
- *
- * @example
- * ```js
- * var myIcon = L.divIcon({className: 'my-div-icon'});
- * // you can set .my-div-icon styles in CSS
- *
- * L.marker([50.505, 30.57], {icon: myIcon}).addTo(map);
- * ```
- *
- * By default, it has a 'leaflet-div-icon' CSS class and is styled as a little white square with a shadow.
- */
+////
+/// @class DivIcon
+/// @aka L.DivIcon
+/// @inherits Icon
+///
+/// Represents a lightweight icon for markers that uses a simple `<div>`
+/// element instead of an image. Inherits from `Icon` but ignores the `iconUrl` and shadow options.
+///
+/// @example
+/// ```js
+/// var myIcon = L.divIcon({className: 'my-div-icon'});
+/// // you can set .my-div-icon styles in CSS
+///
+/// L.marker([50.505, 30.57], {icon: myIcon}).addTo(map);
+/// ```
+///
+/// By default, it has a 'leaflet-div-icon' CSS class and is styled as a little white square with a shadow.
+////
 @JS('L.divIcon')
 class DivIcon extends Icon {
 // Creates a `DivIcon` instance with the given options.

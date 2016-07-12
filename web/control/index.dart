@@ -1,3 +1,6 @@
+@JS()
+library mymain;
+
 //import 'dart:math' hide Rectangle;
 import 'dart:html' hide Rectangle;
 import 'dart:async';
@@ -10,6 +13,12 @@ import 'package:leafletjs/leafletjs.control.dart';
 import 'package:leafletjs/leafletjs.dom.dart';
 import 'dart:async';
 import 'dart:convert';
+
+@anonymous
+@JS()
+class LiteralLayers {
+  external factory LiteralLayers({city, street});
+}
 
 main() async {
   _initMap();
@@ -26,8 +35,6 @@ _initMap() {
   var marker = new Marker(new L.LatLng([10, 20]), mopt);
   marker.bindPopup('hi');
   _map.addLayer(marker);
-  var cScale = new ControlScale();
-  cScale.addTo(_map);
   var cm = new CircleMarker(new L.LatLng(-10, 10));
   cm.addTo(_map);
   var mGeoJSON = marker.toGeoJSON();
@@ -107,4 +114,8 @@ _initMap() {
 //  var defIconOpt = defIcon.options as IconOptions;
 //  print(defIconOpt);
   new Marker(new L.LatLng(50.505, 30.57), new MarkerOptions(icon: myIcon)).addTo(_map);
+  var payload = new LiteralLayers(city: tileLayer, street: tileLayer);
+
+  new ControlLayers(payload)..addTo(_map);
+  new ControlScale().addTo(_map);
 }

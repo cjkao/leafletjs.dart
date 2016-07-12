@@ -55,7 +55,7 @@ class ControlLayers extends Control {
   /// 	"Marker": marker,
   /// 	"Roads": roadsLayer
   /// };
-  external ControlLayers([Layer baseLayers, Map overlays, ControlLayersOptions options]);
+  external ControlLayers([Object baseLayers, Object overlays, ControlLayersOptions options]);
 
   external html.Element onAdd(L.Map map);
 

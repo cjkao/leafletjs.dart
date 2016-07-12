@@ -4,7 +4,7 @@ library leafletjs.icon;
 import '../../map.dart';
 import 'dart:html' as html;
 import 'package:js/js.dart';
-import '../../point.dart';
+import '../../geometry/point.dart';
 import 'dart:js';
 import '../../core/class.dart';
 

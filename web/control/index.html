@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <script src="../leaflet-src.js"></script>
+    <script defer type="application/dart" src="index.dart"></script>
+    <script defer src="packages/browser/dart.js"></script>
+
+    <script>
+     L.Util.isArray = function(item){ return Array.isArray(item);};
+
+    </script>
+    <link rel="stylesheet" href="../leaflet.css">
+    <style>
+        #map {
+            height: 300px;
+            overflow: hidden;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id='map'>
+    </div>
+</body>
+
+</html>

@@ -2,13 +2,13 @@
 library leafletjs.map;
 
 import 'dart:html' as html;
-import 'crs.dart' as crs;
+import 'geo/crs/crs.dart' as crs;
 import "package:js/js.dart";
 import 'lat.lng.bounds.dart';
 import 'lat.lng.dart';
-import 'point.dart';
+import 'geometry/point.dart';
 import 'evented.dart';
-import 'bounds.dart';
+import 'geometry/bounds.dart';
 import '../leafletjs.control.dart';
 import '../leafletjs.map.dart';
 import '../leafletjs.layer.dart';

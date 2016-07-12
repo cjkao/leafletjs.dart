@@ -5,7 +5,7 @@ import '../../map.dart' as L;
 import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'renderer.js.dart';
-import '../../point.dart';
+import '../../geometry/point.dart';
 ////
 /// @class SVG
 /// @inherits Renderer

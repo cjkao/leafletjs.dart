@@ -10,6 +10,8 @@ import '../layer.dart';
 
 @JS('L.marker')
 class Marker extends Layer {
+  external MarkerOptions get options;
+
   ///
   ///Instantiates a Marker object given a geographical point and optionally an options object.
   ///

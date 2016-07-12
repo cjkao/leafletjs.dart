@@ -3,7 +3,7 @@ library leafletjs.event;
 
 import 'dart:html' as html;
 import "package:js/js.dart";
-import 'point.dart';
+import 'geometry/point.dart';
 import 'lat.lng.dart';
 import 'package:func/func.dart';
 

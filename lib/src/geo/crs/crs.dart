@@ -2,11 +2,11 @@
 library leafletjs.crs;
 
 import "package:js/js.dart";
-import 'point.dart';
-import 'lat.lng.dart';
-import 'bounds.dart';
-import 'transformation.dart';
-import 'projection.dart';
+import '../../geometry/point.dart';
+import '../../lat.lng.dart';
+import '../../geometry/bounds.dart';
+import '../../geometry/transformation.dart';
+import '../projection/projection.dart';
 
 ///
 ///
@@ -62,15 +62,16 @@ abstract class ICRS {
   // Returns the projection's bounds scaled and transformed for the provided `zoom`.
   external Bounds getProjectedBounds(num zoom);
 
+  external bool get infinite;
+
   /// @property infinite: Boolean = false
   /// If true, the coordinate space will be unbounded (infinite in both axes)
-  external bool get infinite;
   external void set infinite(bool _);
 
   // @method wrapLatLng(latlng: LatLng): LatLng
   // Returns a `LatLng` where lat and lng has been wrapped according to the
   // CRS's `wrapLat` and `wrapLng` properties, if they are outside the CRS's bounds.
-  external wrapLatLng(LatLng latlng);
+  external LatLng wrapLatLng(LatLng latlng);
 }
 
 ///
@@ -125,7 +126,6 @@ class CrsEPSG3857 extends CrsEarth {
 }
 
 @JS('L.CRS.EPSG900913')
-@anonymous
 class CrsEPSG900913 extends CrsEPSG3857 {}
 
 /*
@@ -135,7 +135,6 @@ class CrsEPSG900913 extends CrsEPSG3857 {}
  * A common CRS among GIS enthusiasts. Uses simple Equirectangular projection.
  */
 @JS('L.CRS.EPSG4326')
-@anonymous
 class CrsEPSG4326 extends CrsEarth {}
 
 @JS("L.CRS.Simple")

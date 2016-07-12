@@ -4,6 +4,7 @@ library leafletjs.control;
 import '../map.dart' as L;
 import 'dart:html' as html;
 import 'package:js/js.dart';
+import '../core/class.dart';
 
 ////
 /// @class Control
@@ -13,7 +14,9 @@ import 'package:js/js.dart';
 /// All other controls extend from this class.
 ////
 @JS('L.control')
-class Control {
+class Control extends IClass {
+  external ControlOptions get options;
+
   ///  constructor
   external Control([ControlOptions options]);
 

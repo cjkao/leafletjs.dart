@@ -4,6 +4,29 @@ library leafletjs.lat.lng.bounds;
 import "package:js/js.dart";
 import 'lat.lng.dart';
 
+/*
+ * @class LatLngBounds
+ * @aka L.LatLngBounds
+ *
+ * Represents a rectangular geographical area on a map.
+ *
+ * @example
+ *
+ * ```js
+ * var southWest = L.latLng(40.712, -74.227),
+ * northEast = L.latLng(40.774, -74.125),
+ * bounds = L.latLngBounds(southWest, northEast);
+ * ```
+ *
+ * All Leaflet methods that accept LatLngBounds objects also accept them in a simple Array form (unless noted otherwise), so the bounds example above can be passed like this:
+ *
+ * ```js
+ * map.fitBounds([
+ * 	[40.712, -74.227],
+ * 	[40.774, -74.125]
+ * ]);
+ * ```
+ */
 @JS("L.latLngBounds")
 class LatLngBounds {
   ///
