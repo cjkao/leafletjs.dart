@@ -16,6 +16,7 @@ import '../leafletjs.layer.dart';
 @JS("L.Map")
 class Map extends IEvented with IMapLayer {
   external Map(String id, [MapOptions options]);
+  external MapOptions get options;
   // @method setView(center: LatLnt, zoom: Number, options?: Zoom/Pan options): this
   // Sets the view of the map (geographical center and zoom) with the given
   // animation options.
@@ -289,6 +290,8 @@ class Map extends IEvented with IMapLayer {
   /// Sets the view of the map with a smooth animation like [`flyTo`](#map-flyto),
   /// but takes a bounds parameter like [`fitBounds`](#map-fitbounds).
   external Map flyToBounds(LatLngBounds bounds, [options]);
+
+  external ControlAttribution get attributionControl;
 }
 
 @JS()
