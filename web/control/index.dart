@@ -9,7 +9,7 @@ import 'package:leafletjs/leafletjs.dart' as L;
 import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 import 'dart:js';
 import 'package:leafletjs/leafletjs.layer.dart';
-import 'package:leafletjs/leafletjs.control.dart';
+import 'package:leafletjs/leafletjs.control.dart' as ctrl;
 import 'package:leafletjs/leafletjs.dom.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -116,6 +116,6 @@ _initMap() {
   new Marker(new L.LatLng(50.505, 30.57), new MarkerOptions(icon: myIcon)).addTo(_map);
   var payload = new LiteralLayers(city: tileLayer, street: tileLayer);
 
-  new ControlLayers(payload)..addTo(_map);
-  new ControlScale().addTo(_map);
+  new ctrl.Layers(payload)..addTo(_map);
+  new ctrl.Scale().addTo(_map);
 }

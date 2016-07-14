@@ -6,7 +6,7 @@ import 'package:leafletjs/leafletjs.dart' as L;
 import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 import 'dart:js';
 import 'package:leafletjs/leafletjs.layer.dart';
-import 'package:leafletjs/leafletjs.control.dart';
+import 'package:leafletjs/leafletjs.control.dart' as ctrl;
 import 'package:leafletjs/leafletjs.dom.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -26,7 +26,7 @@ _initMap() {
   var marker = new Marker(new L.LatLng([10, 20]), mopt);
   marker.bindPopup('hi');
   _map.addLayer(marker);
-  var cScale = new ControlScale();
+  var cScale = new ctrl.Scale();
   cScale.addTo(_map);
   var cm = new CircleMarker(new L.LatLng(-10, 10));
   cm.addTo(_map);

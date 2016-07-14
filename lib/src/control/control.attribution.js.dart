@@ -14,28 +14,29 @@ import 'control.js.dart';
 /// The attribution control allows you to display attribution data in a small text box on a map. It is put on the map by default unless you set its [`attributionControl` option](#map-attributioncontrol) to `false`, and it fetches attribution texts from layers with the [`getAttribution` method](#layer-getattribution) automatically. Extends Control.
 ////
 @JS('L.control.attribution')
-class ControlAttribution extends Control {
+class Attribution extends Control {
   ///  constructor
-  external ControlAttribution([options]);
+  external Attribution([options]);
 
   external dynamic onAdd(L.Map map);
 
   /// @method setPrefix(prefix: String): this
   /// Sets the text before the attributions.
-  external ControlAttribution setPrefix(String prefix);
+  external Attribution setPrefix(String prefix);
 
   /// @method addAttribution(text: String): this
   /// Adds an attribution text (e.g. `'Vector data &copy; Mapbox'`).
-  external ControlAttribution addAttribution(String text);
+  external Attribution addAttribution(String text);
 
   /// @method removeAttribution(text: String): this
   /// Removes an attribution text.
-  external ControlAttribution removeAttribution(String text);
+  external Attribution removeAttribution(String text);
+  external AttributionOptions get options;
 }
 
 @JS()
 @anonymous
-class ControlAttributionOptions extends ControlOptions {
+class AttributionOptions extends ControlOptions {
   /// default [position] : 'bottomright'
   external String get position;
   external void set position(String _);
@@ -44,5 +45,5 @@ class ControlAttributionOptions extends ControlOptions {
   external String get prefix;
   external void set prefix(String _);
 
-  external factory ControlAttributionOptions({String position, String prefix});
+  external factory AttributionOptions({String position, String prefix});
 }

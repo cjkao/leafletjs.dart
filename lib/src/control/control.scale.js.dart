@@ -20,9 +20,9 @@ import 'control.js.dart';
 /// ```
 ////
 @JS('L.control.scale')
-class ControlScale extends Control {
+class Scale extends Control {
   ///  constructor
-  external ControlScale([options]);
+  external Scale([options]);
 
   external html.Element onAdd(L.Map map);
 

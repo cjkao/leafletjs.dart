@@ -275,7 +275,7 @@ class Map extends IEvented with IMapLayer {
   ///
   /// only exist when zoomControl is on
   ///
-  external ControlZoom get zoomControl;
+  external Zoom get zoomControl;
 
   /// Box (shift-drag with mouse) zoom handler.
   external MapBoxZoom get boxZoom;
@@ -291,7 +291,7 @@ class Map extends IEvented with IMapLayer {
   /// but takes a bounds parameter like [`fitBounds`](#map-fitbounds).
   external Map flyToBounds(LatLngBounds bounds, [options]);
 
-  external ControlAttribution get attributionControl;
+  external Attribution get attributionControl;
 }
 
 @JS()

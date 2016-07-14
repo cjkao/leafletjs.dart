@@ -46,7 +46,7 @@ import 'control.js.dart';
 /// ```
 ////
 @JS('L.control.layers')
-class ControlLayers extends Control {
+class Layers extends Control {
   ///  constructor
   /// @factory L.control.layers(baselayers?: Object, overlays?: Object, options?: Control.Layers options)
   /// Creates an attribution control with the given layers. Base layers will be switched with radio buttons, while overlays will be switched with checkboxes. Note that all base layers should be passed in the base layers object, but only one should be added to the map during map instantiation.
@@ -55,7 +55,7 @@ class ControlLayers extends Control {
   /// 	"Marker": marker,
   /// 	"Roads": roadsLayer
   /// };
-  external ControlLayers([Object baseLayers, Object overlays, ControlLayersOptions options]);
+  external Layers([Object baseLayers, Object overlays, LayersOptions options]);
 
   external html.Element onAdd(L.Map map);
 
@@ -63,28 +63,29 @@ class ControlLayers extends Control {
 
   /// @method addBaseLayer(layer: Layer, name: String): this
   /// Adds a base layer (radio button entry) with the given name to the control.
-  external ControlLayers addBaseLayer(Layer layer, String name);
+  external Layers addBaseLayer(Layer layer, String name);
 
   /// @method addOverlay(layer: Layer, name: String): this
   /// Adds an overlay (checkbox entry) with the given name to the control.
-  external ControlLayers addOverlay(Layer layer, String name);
+  external Layers addOverlay(Layer layer, String name);
 
   /// @method removeLayer(layer: Layer): this
   /// Remove the given layer from the control.
-  external ControlLayers removeLayer(Layer layer);
+  external Layers removeLayer(Layer layer);
 
   /// @method expand(): this
   /// Expand the control container if collapsed.
-  external ControlLayers expand();
+  external Layers expand();
 
   /// @method collapse(): this
   /// Collapse the control container if expanded.
-  external ControlLayers collapse();
+  external Layers collapse();
+  external LayersOptions get options;
 }
 
 @JS()
 @anonymous
-class ControlLayersOptions extends ControlOptions {
+class LayersOptions extends ControlOptions {
   /// default [position] : 'topright'
   external String get position;
   external void set position(String _);
@@ -97,5 +98,5 @@ class ControlLayersOptions extends ControlOptions {
   external bool get hideSingleBase;
   external void set hideSingleBase(bool _);
 
-  external factory ControlLayersOptions({String position, bool autoZIndex, bool hideSingleBase});
+  external factory LayersOptions({String position, bool autoZIndex, bool hideSingleBase});
 }

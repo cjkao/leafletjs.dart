@@ -6,7 +6,6 @@ import 'package:leafletjs/leafletjs.dart' as L;
 import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 import 'dart:js';
 import 'package:leafletjs/leafletjs.layer.dart';
-import 'package:leafletjs/leafletjs.control.dart';
 import 'package:leafletjs/leafletjs.dom.dart';
 import 'dart:async';
 import 'dart:convert';
