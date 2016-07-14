@@ -1,11 +1,10 @@
 @JS('')
 library leafletjs.imageoverlay;
 
-import '../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
-import 'layer.dart';
+
 import '../lat.lng.bounds.dart';
+import 'layer.dart';
 
 ////
 /// @class ImageOverlay

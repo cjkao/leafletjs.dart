@@ -1,8 +1,6 @@
 @JS('')
 library leafletjs.polyline;
 
-import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
 import '../../lat.lng.dart';
 import '../../lat.lng.bounds.dart';

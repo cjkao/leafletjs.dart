@@ -2,7 +2,6 @@
 library leafletjs.handler;
 
 import '../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'class.dart';
 

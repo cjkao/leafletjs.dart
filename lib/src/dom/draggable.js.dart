@@ -1,7 +1,6 @@
 @JS('')
 library leafletjs.draggable;
 
-import '../map.dart' as L;
 import 'dart:html' as html;
 import 'package:js/js.dart';
 

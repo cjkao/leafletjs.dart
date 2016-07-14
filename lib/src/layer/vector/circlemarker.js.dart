@@ -1,9 +1,8 @@
 @JS('')
 library leafletjs.circlemarker;
 
-import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
+
 import '../../lat.lng.dart';
 import 'path.js.dart';
 

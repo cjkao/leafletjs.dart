@@ -1,12 +1,12 @@
 @JS()
 library leafletjs.marker;
 
-import '../../map.dart' as L;
-import '../../lat.lng.dart';
-import 'dart:html' as html;
 import 'package:js/js.dart';
-import 'icon.js.dart';
+
+import '../../lat.lng.dart';
+import '../../map.dart' as L;
 import '../layer.dart';
+import 'icon.js.dart';
 
 @JS('L.marker')
 class Marker extends Layer {

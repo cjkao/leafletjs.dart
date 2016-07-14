@@ -1,8 +1,6 @@
 @JS('')
 library leafletjs.featuregroup;
 
-import '../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'layergroup.js.dart';
 import 'layer.dart';

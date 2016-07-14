@@ -1,13 +1,10 @@
 @JS('')
 library leafletjs.tilelayer;
 
-import '../../map.dart' as L;
 import 'dart:html' as html;
 import 'package:js/js.dart';
 import '../../lat.lng.bounds.dart';
-import '../layer.dart';
 import 'gridlayer.js.dart';
-import '../../lat.lng.dart';
 
 ////
 /// @class TileLayer

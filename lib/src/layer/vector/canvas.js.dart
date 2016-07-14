@@ -1,9 +1,8 @@
 @JS('')
 library leafletjs.canvas;
 
-import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
+
 import 'renderer.js.dart';
 
 ////

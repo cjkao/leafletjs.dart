@@ -2,17 +2,14 @@
 library mymain;
 
 //import 'dart:math' hide Rectangle;
-import 'dart:html' hide Rectangle;
 import 'dart:async';
-import 'package:js/js.dart';
-import 'package:leafletjs/leafletjs.dart' as L;
-import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 import 'dart:js';
-import 'package:leafletjs/leafletjs.layer.dart';
+
+import 'package:js/js.dart';
 import 'package:leafletjs/leafletjs.control.dart' as ctrl;
-import 'package:leafletjs/leafletjs.dom.dart';
-import 'dart:async';
-import 'dart:convert';
+import 'package:leafletjs/leafletjs.dart' as L;
+import 'package:leafletjs/leafletjs.layer.dart';
+import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 
 @anonymous
 @JS()
@@ -59,6 +56,7 @@ _initMap() {
   var latlngx = new L.LatLng([1, 2, 3]);
   var latLngBnd = new L.LatLngBounds(latlngx);
 
+  print(latLngBnd);
   var p = L.LonLat.project(latlngx);
   var unP = L.LonLat.unproject(p);
   var pbound = L.LonLat.bounds;

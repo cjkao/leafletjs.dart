@@ -1,15 +1,12 @@
 //import 'dart:math' hide Rectangle;
-import 'dart:html' hide Rectangle;
 import 'dart:async';
-import 'package:js/js.dart';
-import 'package:leafletjs/leafletjs.dart' as L;
-import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 import 'dart:js';
-import 'package:leafletjs/leafletjs.layer.dart';
+
+import 'package:js/js.dart';
 import 'package:leafletjs/leafletjs.control.dart' as ctrl;
-import 'package:leafletjs/leafletjs.dom.dart';
-import 'dart:async';
-import 'dart:convert';
+import 'package:leafletjs/leafletjs.dart' as L;
+import 'package:leafletjs/leafletjs.layer.dart';
+import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 
 main() async {
   _initMap();

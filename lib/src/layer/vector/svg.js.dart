@@ -1,11 +1,10 @@
 @JS('')
 library leafletjs.svg;
 
-import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
-import 'renderer.js.dart';
+
 import '../../geometry/point.dart';
+import 'renderer.js.dart';
 ////
 /// @class SVG
 /// @inherits Renderer

@@ -4,6 +4,8 @@ library leafletjs.evented;
 import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'class.dart';
+import '../geometry/point.dart';
+import '../lat.lng.dart';
 
 @JS('L.evented')
 class Evented extends IClass {
@@ -35,4 +37,20 @@ class Evented extends IClass {
   /// @method removeEventParent(obj: Evented): this
   /// Removes an event parent, so it will stop receiving propagated events
   external Evented removeEventParent(Evented obj);
+}
+
+@JS()
+@anonymous
+class Event {
+  Point containerPoint;
+  LatLng latlng;
+  Point layerPoint;
+  html.MouseEvent originalEvent;
+
+  /// event type, e.g: click
+  String type;
+}
+
+class Evt {
+  static const String CLICK = 'click';
 }

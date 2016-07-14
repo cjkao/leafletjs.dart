@@ -7,14 +7,14 @@ import "package:js/js.dart";
 import 'lat.lng.bounds.dart';
 import 'lat.lng.dart';
 import 'geometry/point.dart';
-import 'evented.dart';
+import 'core/events.js.dart';
 import 'geometry/bounds.dart';
 import '../leafletjs.control.dart';
 import '../leafletjs.map.dart';
 import '../leafletjs.layer.dart';
 
 @JS("L.Map")
-class Map extends IEvented with IMapLayer {
+class Map extends Evented with IMapLayer {
   external Map(String id, [MapOptions options]);
   external MapOptions get options;
   // @method setView(center: LatLnt, zoom: Number, options?: Zoom/Pan options): this

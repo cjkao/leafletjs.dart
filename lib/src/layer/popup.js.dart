@@ -1,10 +1,10 @@
 @JS('')
 library leafletjs.popup;
 
-import '../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
+
 import '../lat.lng.dart';
+import '../map.dart' as L;
 import 'layer.dart';
 
 /*

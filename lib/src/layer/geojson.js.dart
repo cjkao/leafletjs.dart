@@ -1,11 +1,10 @@
 @JS('')
 library leafletjs.geojson;
 
-import '../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
-import 'featuregroup.js.dart';
+
 import '../lat.lng.dart';
+import 'featuregroup.js.dart';
 
 ////
 /// @class GeoJSON

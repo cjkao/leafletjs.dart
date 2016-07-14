@@ -1,8 +1,6 @@
 @JS('')
 library leafletjs.rectangle;
 
-import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
 import '../../lat.lng.bounds.dart';
 import 'polyline.js.dart';

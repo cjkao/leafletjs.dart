@@ -1,9 +1,9 @@
 @JS('')
 library leafletjs.path;
 
-import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
+
+import '../../map.dart' as L;
 import '../layer.dart';
 
 ///

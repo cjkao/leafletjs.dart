@@ -1,9 +1,8 @@
 @JS('')
 library leafletjs.mapboxzoom;
 
-import 'dart:html' as html;
 import 'package:js/js.dart';
-import '../../core/handler.js.dart';
+
 import '../../map.dart' as L;
 
 /*

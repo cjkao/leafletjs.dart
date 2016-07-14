@@ -2,7 +2,6 @@
 library leafletjs.tilelayerwms;
 
 import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'tilelayer.js.dart';
 

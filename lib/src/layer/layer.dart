@@ -4,7 +4,7 @@ library leafletjs.layer;
 import "package:js/js.dart";
 import '../map.dart' as L;
 import 'dart:html' as html;
-import '../evented.dart';
+import '../core/events.js.dart';
 import 'popup.js.dart';
 import '../lat.lng.dart';
 
@@ -32,7 +32,7 @@ import '../lat.lng.dart';
 /// Fired after the layer is removed from a map
 ////
 @JS()
-class Layer extends IEvented {
+class Layer extends Evented {
 //  external void onAdd(L.Map map);
 //  external void onRemove(Map map);
 

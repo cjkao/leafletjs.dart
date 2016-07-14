@@ -1,12 +1,10 @@
 @JS('')
 library leafletjs.polygon;
 
-import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
-import 'polyline.js.dart';
-import '../../geometry/point.dart';
+
 import '../../lat.lng.dart';
+import 'polyline.js.dart';
 
 ///
 /// @class Polygon

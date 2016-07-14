@@ -9,6 +9,6 @@ export 'src/lat.lng.dart';
 export 'src/map.dart';
 export 'src/geometry/point.dart';
 export 'src/geometry/bounds.dart';
-export 'src/evented.dart';
+export 'src/core/events.js.dart';
 export 'src/geo/projection/projection.dart';
 //export 'src/crs.dart';

@@ -1,7 +1,6 @@
 @JS('')
 library leafletjs.core;
 
-import 'dart:html' as html;
 import 'package:js/js.dart';
 
 @JS('L.Class')

@@ -5,7 +5,6 @@ import "package:js/js.dart";
 import '../../geometry/point.dart';
 import '../../lat.lng.dart';
 import '../../geometry/bounds.dart';
-import '../../geometry/transformation.dart';
 
 ///
 /// @namespace Projection

@@ -1,12 +1,11 @@
 @JS('')
 library leafletjs.circle;
 
-import '../../map.dart' as L;
-import 'dart:html' as html;
 import 'package:js/js.dart';
+
 import '../../lat.lng.bounds.dart';
-import 'circlemarker.js.dart';
 import '../../lat.lng.dart';
+import 'circlemarker.js.dart';
 
 @JS('L.circle')
 class Circle extends CircleMarker {
