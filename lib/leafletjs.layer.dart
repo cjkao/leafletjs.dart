@@ -3,6 +3,8 @@ library leafletjs.layer;
 
 import "package:js/js.dart";
 export 'src/layer/layer.dart';
+export 'src/layer/tooltip.js.dart';
+export 'src/layer/divoverlay.js.dart';
 export 'src/layer/popup.js.dart';
 export 'src/layer/featuregroup.js.dart';
 export 'src/layer/geojson.js.dart';

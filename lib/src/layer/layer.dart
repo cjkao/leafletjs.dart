@@ -7,6 +7,7 @@ import 'dart:html' as html;
 import '../core/events.js.dart';
 import 'popup.js.dart';
 import '../lat.lng.dart';
+import 'tooltip.js.dart';
 
 ////
 /// @class Layer
@@ -77,40 +78,77 @@ class Layer extends Evented {
   ///
   /// Popups will also be automatically opened when the layer is clicked on and closed when the layer is removed from the map or another popup is opened.
 
-  ///
   /// @method bindPopup(content: String|HTMLElement|Function|Popup, options?: Popup options): this
   /// Binds a popup to the layer with the passed `content` and sets up the
   /// neccessary event listeners. If a `Function` is passed it will receive
   /// the layer as the first argument and should return a `String` or `HTMLElement`.
-  external Popup bindPopup(dynamic content, [options]);
+  external Layer bindPopup(content, [PopupOptions options]);
 
   /// @method unbindPopup(): this
   /// Removes the popup previously bound with `bindPopup`.
-  external Popup unbindPopup();
+  external Layer unbindPopup();
 
   /// @method openPopup(latlng?: LatLng): this
   /// Opens the bound popup at the specificed `latlng` or at the default popup anchor if no `latlng` is passed.
-  external Popup openPopup([LatLng latlng]);
+  external Layer openPopup([LatLng latlng]);
 
   /// @method closePopup(): this
   /// Closes the popup bound to this layer if it is open.
-  external Popup closePopup();
+  external Layer closePopup();
 
-  /// @method closePopup(): this
+  /// @method togglePopup(): this
   /// Opens or closes the popup bound to this layer depending on its current state.
-  external Popup togglePopup();
+  external Layer togglePopup();
 
-  /// @method closePopup(): this
+  /// @method isPopupOpen(): boolean
   /// Returns `true` if the popup bound to this layer is currently open.
-  external Popup isPopupOpen();
+  external bool isPopupOpen();
 
-  /// @method setPopupContent(content: String|HTMLElement|Popup, options?: Popup options): this
+  /// @method setPopupContent(content: String|HTMLElement|Popup): this
   /// Sets the content of the popup bound to this layer.
-  external Popup setPopupContent(dynamic content, [options]);
+  external Layer setPopupContent(content);
 
   /// @method getPopup(): Popup
   /// Returns the popup bound to this layer.
   external Popup getPopup();
+
+  ///
+  ////////////////////////////For TOOL TIP
+  ///
+
+  /// @method bindTooltip(content: String|HTMLElement|Function|Tooltip, options?: Tooltip options): this
+  /// Binds a tooltip to the layer with the passed `content` and sets up the
+  /// neccessary event listeners. If a `Function` is passed it will receive
+  /// the layer as the first argument and should return a `String` or `HTMLElement`.
+  external Layer bindTooltip(content, [TooltipOptions options]);
+
+  /// @method unbindTooltip(): this
+  /// Removes the tooltip previously bound with `bindTooltip`.
+  external Layer unbindTooltip();
+
+  /// @method openTooltip(latlng?: LatLng): this
+  /// Opens the bound tooltip at the specificed `latlng` or at the default tooltip anchor if no `latlng` is passed.
+  external Layer openTooltip([LatLng latlng]);
+
+  /// @method closeTooltip(): this
+  /// Closes the tooltip bound to this layer if it is open.
+  external Layer closeTooltip();
+
+  /// @method toggleTooltip(): this
+  /// Opens or closes the tooltip bound to this layer depending on its current state.
+  external Layer toggleTooltip();
+
+  /// @method isTooltipOpen(): boolean
+  /// Returns `true` if the tooltip bound to this layer is currently open.
+  external bool isTooltipOpen();
+
+  /// @method setTooltipContent(content: String|HTMLElement|Tooltip): this
+  /// Sets the content of the tooltip bound to this layer.
+  external Layer setTooltipContent(Tooltip content);
+
+  /// @method getTooltip(): Tooltip
+  /// Returns the tooltip bound to this layer.
+  external Tooltip getTooltip();
 }
 
 /// functions mix into Map

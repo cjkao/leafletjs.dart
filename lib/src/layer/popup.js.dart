@@ -6,6 +6,7 @@ import 'package:js/js.dart';
 import '../lat.lng.dart';
 import '../map.dart' as L;
 import 'layer.dart';
+import 'DivOverlay.js.dart';
 
 /*
  * @class Popup
@@ -33,7 +34,7 @@ import 'layer.dart';
  * ```
  */
 @JS('L.popup')
-class Popup extends Layer {
+class Popup extends DivOverlay {
   ///  constructor
   ///  options?: Popup options, source?: Layer
   external Popup([PopupOptions options, Layer source]);
