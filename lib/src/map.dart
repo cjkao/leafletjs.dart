@@ -439,6 +439,10 @@ class MapOptions {
   // Won't animate zoom if the zoom difference exceeds this value.
   external num get zoomAnimationThreshold; //: 4
   external void set zoomAnimationThreshold(num _); //: 4
+
+  external bool get closePopupOnClick;
+  external void set closePopupOnClick(bool _);
+
   external factory MapOptions(
       {crs,
       LatLng center,
@@ -466,7 +470,8 @@ class MapOptions {
       bool tap,
       num tapTolerance,
       bool zoomAnimation,
-      num zoomAnimationThreshold});
+      num zoomAnimationThreshold,
+      bool closePopupOnClick});
 }
 
 class ZoomOptions {
