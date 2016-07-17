@@ -6,7 +6,7 @@ import 'package:js/js.dart';
 import '../lat.lng.dart';
 import '../map.dart' as L;
 import 'layer.dart';
-import 'DivOverlay.js.dart';
+import 'divoverlay.js.dart';
 
 /*
  * @class Popup

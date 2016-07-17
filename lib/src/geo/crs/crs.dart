@@ -85,6 +85,7 @@ abstract class ICRS {
 @anonymous
 class CrsSimple extends ICRS {
   external Transformation get transformation;
+  external void set transformation(_);
   external LonLat get projection;
   external num distance(LatLng latlng1, LatLng latlng2);
 }
