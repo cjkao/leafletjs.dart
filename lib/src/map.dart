@@ -400,34 +400,36 @@ class MapOptions {
   external num get keyboardPanDelta; //h: 80
   external void set keyboardPanDelta(num _);
 
-  // @section Mousewheel options
-  // @option scrollWheelZoom: Boolean|String = true
-  // Whether the map can be zoomed by using the mouse wheel. If passed `'center'`,
-  // it will zoom to the center of the view regardless of where the mouse was.
   external bool get scrollWheelZoom; //: true,
+  /// @section Mousewheel options
+  /// @option scrollWheelZoom: Boolean|String = true
+  /// Whether the map can be zoomed by using the mouse wheel. If passed `'center'`,
+  /// it will zoom to the center of the view regardless of where the mouse was.
   external void set scrollWheelZoom(bool _);
-  // @option wheelDebounceTime: Number = 40
-  // Limits the rate at which a wheel can fire (in milliseconds). By default
-  // user can't zoom via wheel more often than once per 40 ms.
+
   external num get wheelDebounceTime; //: 40,
+  /// @option wheelDebounceTime: Number = 40
+  /// Limits the rate at which a wheel can fire (in milliseconds). By default
+  /// user can't zoom via wheel more often than once per 40 ms.
   external void set wheelDebounceTime(num _);
-  // @option wheelPxPerZoomLevel: Number = 60
-  // How many scroll pixels (as reported by [L.DomEvent.getWheelDelta](#domevent-getwheeldelta))
-  // mean a change of one full zoom level. Smaller values will make wheel-zooming
-  // faster (and vice versa).
   external num get wheelPxPerZoomLevel; //: 60
+  /// @option wheelPxPerZoomLevel: Number = 60
+  /// How many scroll pixels (as reported by [L.DomEvent.getWheelDelta](#domevent-getwheeldelta))
+  /// mean a change of one full zoom level. Smaller values will make wheel-zooming
+  /// faster (and vice versa).
   external void set wheelPxPerZoomLevel(num _);
 
-  // @section Touch interaction options
-  // @option tap: Boolean = true
-  // Enables mobile hacks for supporting instant taps (fixing 200ms click
-  // delay on iOS/Android) and touch holds (fired as `contextmenu` events).
   external bool get tap; //: true,
+  /// @section Touch interaction options
+  /// @option tap: Boolean = true
+  /// * Enables mobile hacks for supporting instant taps (fixing 200ms click
+  /// delay on iOS/Android) and touch holds (fired as `contextmenu` events).
   external void set tap(_);
-  // @option tapTolerance: Number = 15
-  // The max number of pixels a user can shift his finger during touch
-  // for it to be considered a valid tap.
+
   external num get tapTolerance; //: 15
+  /// @option tapTolerance: Number = 15
+  /// * The max number of pixels a user can shift his finger during touch
+  /// for it to be considered a valid tap.
   external void set tapTolerance(_); //: 15
   // @option zoomAnimation: Boolean = true
   // Whether the map zoom animation is enabled. By default it's enabled
@@ -445,7 +447,9 @@ class MapOptions {
 
   external factory MapOptions(
       {crs,
-      LatLng center,
+
+      ///LatLng or [y,x]
+      dynamic center,
       num zoom,
       List<Layer> layers,
       num minZoom,
@@ -465,13 +469,18 @@ class MapOptions {
       bool keyboard,
       num keyboardPanDelta,
       bool scrollWheelZoom,
+
+      /// @option wheelDebounceTime: Number = 40
+      /// Limits the rate at which a wheel can fire (in milliseconds). By default
+      /// user can't zoom via wheel more often than once per 40 ms.
       num wheelDebounceTime,
       num wheelPxPerZoomLevel,
       bool tap,
       num tapTolerance,
       bool zoomAnimation,
       num zoomAnimationThreshold,
-      bool closePopupOnClick});
+      bool closePopupOnClick,
+      bool attributionControl});
 }
 
 class ZoomOptions {

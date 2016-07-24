@@ -17,7 +17,7 @@ class Circle extends CircleMarker {
   // @factory L.circle(latlng: LatLng, radius: Number, options?: Circle options)
   // Obsolete way of instantiating a circle, for compatibility with 0.7.x code.
   // Do not use in new applications or plugins.
-  external Circle(LatLng latlng, [CircleMarkerOptions options]);
+  external Circle(dynamic latlng, [CircleMarkerOptions options]);
 
   /// @method setRadius(radius: Number): this
   /// Sets the radius of a circle. Units are in meters.

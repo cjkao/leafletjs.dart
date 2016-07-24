@@ -45,16 +45,16 @@ class Layer extends Evented {
   ////
   external Layer addTo(L.Map map);
 
-  // @method remove: this
-  // Removes the layer from the map it is currently active on.
+  /// @method remove: this
+  /// Removes the layer from the map it is currently active on.
   external Layer remove();
 
-  // @method removeFrom(map: Map): this
-  // Removes the layer from the given map
+  /// @method removeFrom(map: Map): this
+  /// Removes the layer from the given map
   external Layer removeFrom(L.Map map);
 
-  // @method getPane(name? : String): HTMLElement
-  // Returns the `HTMLElement` representing the named pane on the map. If `name` is omitted, returns the pane for this layer.
+  /// @method getPane(name? : String): HTMLElement
+  /// Returns the `HTMLElement` representing the named pane on the map. If `name` is omitted, returns the pane for this layer.
   external html.Element getPane([String name]);
 
   external Layer addInteractiveTarget(html.Element targetEl);
