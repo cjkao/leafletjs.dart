@@ -6,17 +6,19 @@ import 'package:js/js.dart';
 import 'package:leafletjs/leafletjs.control.dart' as ctrl;
 import 'package:leafletjs/leafletjs.dart' as L;
 import 'package:leafletjs/leafletjs.layer.dart';
-import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
+import 'package:leafletjs/leafletjs.geo.dart' as crs;
 
 main() async {
   _initMap();
 }
 
 _initMap() {
+  var mycrs = crs.Simple;
+  mycrs.transformation = new crs.Transformation(1, 0, 1, 0);
   var accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
-  var _map =
-      new L.Map("map", new L.MapOptions(center: new L.LatLng(60.222296, 24.929713), zoom: 11, zoomControl: true));
+  var _map = new L.Map("map", new L.MapOptions(center: new L.LatLng(60.222296, 24.929713), zoom: 1, zoomControl: true));
   print(_map.zoomControl);
+
   context['mmm'] = _map;
   var mopt = new MarkerOptions();
   mopt.draggable = true;
@@ -87,7 +89,7 @@ _initMap() {
 //  _map.off('click',clickfun);
 //  _map.once('click',clickfun);
   var tileLayer = new TileLayer(
-          'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}',
+          'tile/small-{z}-{x}-{y}.png?access_token={accessToken}',
           new TileLayerOptions(
               maxZoom: 18,
               attribution:

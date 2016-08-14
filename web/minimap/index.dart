@@ -4,20 +4,16 @@ library mymain;
 //import 'dart:math' hide Rectangle;
 import 'dart:async';
 import 'dart:js';
-
+import 'dart:html' as html;
 import 'package:js/js.dart';
 import 'package:leafletjs/leafletjs.control.dart' as ctrl;
 import 'package:leafletjs/leafletjs.dart' as L;
 import 'package:leafletjs/leafletjs.layer.dart';
 //import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 import 'package:leafletjs/leafletjs.geo.dart' as geo;
+import 'package:leafletjs/leafletjs.util.dart';
 import 'minimap.dart';
-
-@anonymous
-@JS()
-class LiteralLayers {
-  external factory LiteralLayers({city, street});
-}
+import 'dart:convert';
 
 @JS("L.CRS.Simple200")
 external geo.CrsSimple get Simple200;
@@ -46,9 +42,10 @@ _initMap() {
   print(_map.zoomControl);
   context['mmm'] = _map;
   var marker = testMarker(_map);
-  testGeo(marker);
+//  testGeo(marker);
   testPolygon(_map);
   testMinimap(_map);
+  testGeo(_map);
   var clickfun = allowInterop((L.Event evt) {
     print('${evt.type}  ${evt.latlng.lng} ${evt.latlng.lat}');
     print(evt.containerPoint.x);
@@ -63,9 +60,11 @@ _initMap() {
   var myIcon = new DivIcon(new DivIconOptions(className: 'my-div-icon'));
   var opt = myIcon.options as DivIconOptions;
   print(opt.className);
-  var payload = new LiteralLayers(city: tileLayer, street: tileLayer);
+  var litLayer = new Dynamic();
+  litLayer['city'] = tileLayer;
+  litLayer['street'] = tileLayer;
 
-  new ctrl.Layers(payload)..addTo(_map);
+  new ctrl.Layers(litLayer.source)..addTo(_map);
   new ctrl.Scale().addTo(_map);
 }
 
@@ -99,9 +98,18 @@ Marker testMarker(L.Map _map) {
   return marker;
 }
 
-testGeo(Marker marker) {
-  var mGeoJSON = marker.toGeoJSON();
-  print(mGeoJSON);
+testGeo(L.Map _map) async {
+//  geoLayer.addTo(_map);
+  var json = JSONparse(await html.HttpRequest.getString('../geojson/sample.json'));
+  var dyn = new Dynamic();
+  dyn['style'] = allowInterop((DynamicSource _) {
+    var item = getOwnPropertyDescriptor(_, 'properties');
+    var item2 = getOwnPropertyDescriptor(item, 'color');
+    //  return new Dynamic.fromMap({'color': item2}).source;
+    return item2;
+  });
+  var geoLayer = new GeoJSON(json, dyn.source);
+  _map.addLayer(geoLayer);
 }
 
 testPolygon(L.Map _map) {

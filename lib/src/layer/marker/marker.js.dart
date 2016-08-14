@@ -14,8 +14,8 @@ class Marker extends Layer {
 
   ///
   ///Instantiates a Marker object given a geographical point and optionally an options object.
-  ///
-  external Marker(LatLng latlng, [MarkerOptions options]);
+  /// [latlng] list or LatLng
+  external Marker(dynamic latlng, [MarkerOptions options]);
   external dynamic onAdd(L.Map map);
 
   external dynamic onRemove(L.Map map);
@@ -100,8 +100,8 @@ class MarkerOptions {
   /// @option opacity: Number = 1.0
   /// The opacity of the marker.
   /// default [opacity] : 1
-  external String get opacity;
-  external void set opacity(String _);
+  external num get opacity;
+  external void set opacity(num _);
 
   /// @option riseOnHover: Boolean = false
   /// If `true`, the marker will get on top of others when you hover the mouse over it.
@@ -134,7 +134,7 @@ class MarkerOptions {
       String title,
       String alt,
       String zIndexOffset,
-      String opacity,
+      num opacity,
       bool riseOnHover,
       String riseOffset,
       String pane,

@@ -4,13 +4,18 @@ library mymain;
 //import 'dart:math' hide Rectangle;
 import 'dart:async';
 import 'dart:js';
-
+import 'dart:convert';
 import 'package:js/js.dart';
 import 'package:leafletjs/leafletjs.control.dart' as ctrl;
 import 'package:leafletjs/leafletjs.dart' as L;
 import 'package:leafletjs/leafletjs.layer.dart';
 //import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 import 'package:leafletjs/leafletjs.geo.dart' as geo;
+import 'package:leafletjs/leafletjs.util.dart';
+//import 'dyn.dart';
+
+@JS('JSON.parse')
+external JSONparse(_);
 
 @anonymous
 @JS()
@@ -89,9 +94,15 @@ _initMap() {
 //  var defIconOpt = defIcon.options as IconOptions;
 //  print(defIconOpt);
   new Marker(new L.LatLng(50.505, 30.57), new MarkerOptions(icon: myIcon)).addTo(_map);
-  var payload = new LiteralLayers(city: tileLayer, street: tileLayer);
 
-  new ctrl.Layers(payload)..addTo(_map);
+//  var jobj = new DynamicSource();
+//  var items = new Dynamic<Layer>();
+  var items = new Dynamic();
+
+  items['city'] = tileLayer;
+  items['book'] = tileLayer;
+
+  new ctrl.Layers(items.source)..addTo(_map);
   new ctrl.Scale().addTo(_map);
 }
 

@@ -1,10 +1,11 @@
+@JS()
 library leafletjs.util;
 
 import 'dart:math';
 import 'src/lat.lng.dart';
+import 'package:js/js.dart';
 
 abstract class PolylineUtil {
-
   ///
   /// Encodes points to a string with given options
   ///
@@ -13,7 +14,7 @@ abstract class PolylineUtil {
       return '';
     }
     if (options == null) {
-      options  = new CodeOptions();
+      options = new CodeOptions();
     }
 
     var output = _encode(points[0].lat, 0.0, options.factor) + _encode(points[0].lng, 0.0, options.factor);
@@ -49,24 +50,15 @@ abstract class PolylineUtil {
   ///
   static List<LatLng> decode(String str, [CodeOptions options]) {
     if (options == null) {
-       options  = new CodeOptions();
+      options = new CodeOptions();
     }
     List<LatLng> coordinates = [];
-    int index = 0,
-        lat = 0,
-        lng = 0,
-        shift = 0,
-        result = 0,
-        byte = null,
-        latitude_change,
-        longitude_change;
-
+    int index = 0, lat = 0, lng = 0, shift = 0, result = 0, byte = null, latitude_change, longitude_change;
 
     // Coordinates have variable length when encoded, so just keep
     // track of whether we've hit the end of the string. In each
     // loop iteration, a single coordinate is decoded.
     while (index < str.length) {
-
       // Reset shift, result, and byte
       byte = null;
       shift = 0;
@@ -104,22 +96,78 @@ abstract class PolylineUtil {
     bool isZero = (result & 1) == 0;
     int val = (result >> 1);
     if (isZero) {
-       return val;
+      return val;
     } else {
-       return -val - 1; //should be ~val, but due to https://github.com/dart-lang/sdk/issues/25493
+      return -val - 1; //should be ~val, but due to https://github.com/dart-lang/sdk/issues/25493
     }
   }
 }
 
 class CodeOptions {
+  num precision;
+  num factor;
 
-    num precision;
-    num factor;
-
-    CodeOptions([this.precision = 5, this.factor]) {
-      if (this.factor == null) {
-        this.factor = pow(10, precision);
-      }
+  CodeOptions([this.precision = 5, this.factor]) {
+    if (this.factor == null) {
+      this.factor = pow(10, precision);
     }
+  }
+}
 
+////
+
+@JS('JSON.parse')
+external JSONparse(_);
+
+@JS()
+@anonymous
+class DynamicSource {}
+
+@JS()
+@anonymous
+class DynamicDescription {
+  external get value;
+
+  external factory DynamicDescription({bool configurable, bool enumerable, bool writable, value});
+}
+
+// Interop to ES5+ functions that will allow us to get/set arbitrary properties on
+// anonymous javascript objects.
+@JS('Object.defineProperty')
+external void defineProperty(object, String property, DynamicDescription description);
+
+@JS('Object.getOwnPropertyDescriptor')
+external DynamicDescription getOwnPropertyDescriptor(object, String property);
+
+// A helper class for dealing with proxying anonymous JS objects that are to be
+// used as maps and therefore do not have a fixed structure that can be defined
+// ahead of time.
+class Dynamic<T> {
+  DynamicSource source;
+
+  Dynamic([this.source]) {
+    source ??= JSONparse('{}');
+  }
+  Dynamic.fromMap(Map m) {
+    source ??= JSONparse('{}');
+    m.forEach((key, value) {
+      if (value is Function) {
+        this[key] = allowInterop(value);
+      } else if (value is Map) {
+        this[key] = new Dynamic.fromMap(value);
+      } else {
+        this[key] = value;
+      }
+    });
+  }
+  T operator [](String key) {
+    return getOwnPropertyDescriptor(this.source, key)?.value;
+  }
+
+  operator []=(String key, value) {
+    defineProperty(
+        this.source, key, new DynamicDescription(value: value, writable: true, enumerable: true, configurable: true));
+
+    return value;
+  }
 }
