@@ -68,6 +68,39 @@
 
     <div id='map'>
     </div>
+    <script src='tiles.json.js'></script>
+    <script>
+
+setTimeout(function(){
+
+    		var vectorGrid = L.vectorGrid.slicer( marks, {
+    			rendererFactory: L.canvas.tile,
+    			vectorTileLayerStyles: {
+    				sliced: function(properties, zoom) {
+    					var p = properties.mapcolor7 % 5;
+    					return {
+    						fillColor: p === 0 ? '#800026' :
+    								p === 1 ? '#E31A1C' :
+    								p === 2 ? '#FEB24C' :
+    								p === 3 ? '#B2FE4C' : '#FFEDA0',
+    	 					fillOpacity: 1,
+    						stroke: true,
+    						fill: true,
+    						color: 'red',
+    // 							opacity: 0.2,
+    						weight: 3,
+    					}
+    				}
+    			}
+
+    		}).addTo(mmm);
+
+
+},1000);
+
+
+
+    </script>
 </body>
 
 </html>

@@ -12,7 +12,6 @@ import 'package:leafletjs/leafletjs.layer.dart';
 //import 'package:leafletjs/src/geo/crs/crs.dart' as crs;
 import 'package:leafletjs/leafletjs.geo.dart' as geo;
 import 'package:leafletjs/leafletjs.util.dart';
-import 'dart:convert';
 
 @JS("L.CRS.Simple200")
 external geo.CrsSimple get Simple200;
@@ -29,20 +28,23 @@ _initMap() {
       "map",
       new L.MapOptions(
           center: [0, 0],
-          maxBounds: new L.LatLngBounds([
-            [-128, -128],
-            [128, 128]
-          ]),
+          //    maxBounds: new L.LatLngBounds([
+          //      [-128, -128],
+          //      [128, 128]
+          //    ]),
           crs: sCRS,
           wheelDebounceTime: 90,
           minZoom: 1,
+          maxZoom: 18,
           zoom: 1,
           zoomControl: true));
   print(_map.zoomControl);
   context['mmm'] = _map;
   testGeo(_map);
-  var tileLayer = new TileLayer('../tile/small-{z}-{x}-{y}.png',
-          new TileLayerOptions(maxZoom: 4, accessToken: accessToken, noWrap: true, errorTileUrl: 'empty.png'))
+  var tileLayer = new TileLayer(
+          '../tile/small-{z}-{x}-{y}.png',
+          new TileLayerOptions(
+              maxZoom: 4, accessToken: accessToken, zIndex: 1, noWrap: true, errorTileUrl: 'empty.png'))
       .addTo(_map);
   var pop = new Popup();
   pop.setContent('htmlContent').setLatLng(new L.LatLng(10, 30)).addTo(_map);
@@ -53,11 +55,9 @@ _initMap() {
   litLayer['city'] = tileLayer;
   litLayer['street'] = tileLayer;
 
-  new ctrl.Layers(litLayer.source)..addTo(_map);
+  new ctrl.Layers(litLayer.source, new ctrl.LayersOptions())..addTo(_map);
   new ctrl.Scale().addTo(_map);
 }
-
-
 
 testGeo(L.Map _map) async {
 //  geoLayer.addTo(_map);
