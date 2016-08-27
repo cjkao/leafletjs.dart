@@ -135,6 +135,11 @@ class PopupOptions {
   external bool get autoClose;
   external void set autoClose(bool _);
 
+  /// @option className: String = ''
+  /// A custom CSS class name to assign to the popup.
+  external String get className;
+  external void set className(String _);
+
   /// default [zoomAnimation] : true
   external bool get zoomAnimation;
   external void set zoomAnimation(bool _);

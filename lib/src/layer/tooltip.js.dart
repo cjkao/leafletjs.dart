@@ -34,6 +34,7 @@ class Tooltip {
   external dynamic onRemove(L.Map map);
 
   external dynamic setOpacity(opacity);
+  external dynamic getEvents();
 }
 
 @JS()

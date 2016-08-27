@@ -69,8 +69,8 @@ class DivOverlayOptions {
   external void set offset(List _);
 
   /// default [zoomAnimation] : true
-  external bool get zoomAnimation;
-  external void set zoomAnimation(bool _);
+  ///external bool get zoomAnimation;
+  ///external void set zoomAnimation(bool _);
 
   /// default [className] : ''
   external String get className;
