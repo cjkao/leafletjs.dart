@@ -144,10 +144,6 @@ class PopupOptions {
   external bool get zoomAnimation;
   external void set zoomAnimation(bool _);
 
-  /// default [className] : ''
-  external String get className;
-  external void set className(String _);
-
   /// default [pane] : 'popupPane'
   external String get pane;
   external void set pane(String _);
