@@ -8,3 +8,4 @@ pubspec.lock
 .pub/
 tool/
 build/
+packages

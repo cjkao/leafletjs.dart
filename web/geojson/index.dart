@@ -39,6 +39,7 @@ _initMap() {
           zoom: 1,
           zoomControl: true));
   print(_map.zoomControl);
+
   context['mmm'] = _map;
   testGeo(_map);
   var tileLayer = new TileLayer(
@@ -51,6 +52,7 @@ _initMap() {
   var myIcon = new DivIcon(new DivIconOptions(className: 'my-div-icon'));
   var opt = myIcon.options as DivIconOptions;
   print(opt.className);
+
   var litLayer = new Dynamic();
   litLayer['city'] = tileLayer;
   litLayer['street'] = tileLayer;
@@ -69,6 +71,7 @@ testGeo(L.Map _map) async {
     //  return new Dynamic.fromMap({'color': item2}).source;
     return item2;
   });
-  var geoLayer = new GeoJSON(json, dyn.source);
+  //dyn['zIndex'] = 30;
+  var geoLayer = new GeoJSON(json, dyn.source)..setZIndex(300);
   _map.addLayer(geoLayer);
 }

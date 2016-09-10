@@ -14,14 +14,14 @@ import 'package:leafletjs/leafletjs.geo.dart' as geo;
 import 'package:leafletjs/leafletjs.util.dart';
 //import 'dyn.dart';
 
-@JS('JSON.parse')
-external JSONparse(_);
+//@JS('JSON.parse')
+//external JSONparse(_);
 
-@anonymous
-@JS()
-class LiteralLayers {
-  external factory LiteralLayers({city, street});
-}
+//@anonymous
+//@JS()
+//class LiteralLayers {
+//  external factory LiteralLayers({city, street});
+//}
 
 @JS("L.CRS.Simple200")
 external geo.CrsSimple get Simple200;
@@ -97,12 +97,16 @@ _initMap() {
 
 //  var jobj = new DynamicSource();
 //  var items = new Dynamic<Layer>();
-  var items = new Dynamic();
 
+  //var items = new Dynamic();
+//  var items = {};
+  var items = new JsObject(context['Object']);
   items['city'] = tileLayer;
   items['book'] = tileLayer;
 
-  new ctrl.Layers(items.source)..addTo(_map);
+  //var ii = new JsObject.jsify(items);
+  //new ctrl.Layers(items.source)..addTo(_map);
+  new ctrl.Layers(items.context)..addTo(_map);
   new ctrl.Scale().addTo(_map);
 }
 
