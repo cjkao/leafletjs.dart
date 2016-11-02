@@ -3,11 +3,12 @@ library leafletjs.tooltip;
 
 import '../map.dart' as L;
 import 'package:js/js.dart';
+import 'layer.dart';
 
 @JS('L.tooltip')
 class Tooltip {
   ///  constructor
-  external Tooltip([options]);
+  external Tooltip([options, Layer source]);
 
   /// @section
   /// @aka Tooltip options
