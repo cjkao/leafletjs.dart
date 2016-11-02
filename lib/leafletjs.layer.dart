@@ -11,6 +11,7 @@ export 'src/layer/geojson.js.dart';
 export 'src/layer/imageoverlay.js.dart';
 export 'src/layer/layergroup.js.dart';
 export 'src/layer/marker/icon.js.dart';
+export 'src/layer/marker/icon.default.js.dart';
 export 'src/layer/marker/div.icon.dart';
 export 'src/layer/marker/marker.js.dart';
 export 'src/layer/vector/circlemarker.js.dart';

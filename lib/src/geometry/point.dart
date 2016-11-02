@@ -64,3 +64,11 @@ class Point {
 
   external String toString();
 }
+
+/*type PointExpression = Point | PointTuple;*/
+/*external Point point(num x, num y, [bool round]);*/
+/*external Point point(Tuple of <num,num> coords);*/
+/*external Point point({x: number, y: number} coords);*/
+@JS("L.point")
+external Point point(dynamic /*num|Tuple of <num,num>|{x: number, y: number}*/ x_coords,
+    [num y, bool round]); /*export type BoundsLiteral = Array<PointTuple>;*/

@@ -1,5 +1,5 @@
 @JS()
-library leafletjs.bounds;
+library leafletjs.geo.geometry.bounds;
 
 import "package:js/js.dart";
 import 'point.dart';
@@ -21,44 +21,38 @@ import 'point.dart';
 /// otherBounds.intersects([[10, 10], [40, 60]]);
 /// ```
 ////
-@JS('L.Bounds')
-class Bounds {
-  // @method extend(point: Point): this
-  // Extends the bounds to contain the given point.
-  external extend(Point point);
-  // @method getCenter(round?: Boolean): Point
-// Returns the center point of the bounds.
-  external getCenter([bool round]);
-
-  // @method getBottomLeft(): Point
-  // Returns the bottom-left point of the bounds.
+@anonymous
+@JS()
+abstract class Bounds {
+  /*external Bounds extend(Point point);*/
+  /*external Bounds extend(Tuple of <num,num> point);*/
+  external Bounds extend(dynamic /*Point|Tuple of <num,num>*/ point);
+  external Point getCenter([bool round]);
   external Point getBottomLeft();
-
-  // @method getTopRight(): Point
-  // Returns the top-right point of the bounds.
-  external Point getTopRight(); // -> Point
-
-  // @method getSize(): Point
-  // Returns the size of the given bounds
+  external Point getTopRight();
   external Point getSize();
-
-  // @method contains(otherBounds: Bounds): Boolean
-  // Returns `true` if the rectangle contains the given one.
-  // @alternative
-  // @method contains(point: Point): Boolean
-  // Returns `true` if the rectangle contains the given poing.
-  external bool contains(dynamic point);
-
-  // @factory L.bounds(topLeft: Point, bottomRight: Point)
-  // Creates a Bounds object from two coordinates (usually top-left and bottom-right corners).
-  // @alternative
-  // @factory L.bounds(points: Point[])
-  // Creates a Bounds object from the points it contains
-  external factory Bounds(Point a, Point b);
-
-  external bool intersects(Bounds bounds); // (Bounds) -> Boolean
-  // @method overlaps(otherBounds: Bounds): Boolean
-  // Returns `true` if the rectangle overlaps the given bounds. Two bounds
-  // overlap if their intersection is an area.
-  external bool overlaps(bounds); // (Bounds) -> Boolean
+  /*external bool contains(Bounds otherBounds);*/
+  /*external bool contains(List<Tuple of <num,num>> otherBounds);*/
+  /*external bool contains(Point point);*/
+  /*external bool contains(Tuple of <num,num> point);*/
+  external bool contains(dynamic /*Bounds|List<Tuple of <num,num>>|Point|Tuple of <num,num>*/ otherBounds_point);
+  /*external bool intersects(Bounds otherBounds);*/
+  /*external bool intersects(List<Tuple of <num,num>> otherBounds);*/
+  external bool intersects(dynamic /*Bounds|List<Tuple of <num,num>>*/ otherBounds);
+  /*external bool overlaps(Bounds otherBounds);*/
+  /*external bool overlaps(List<Tuple of <num,num>> otherBounds);*/
+  external bool overlaps(dynamic /*Bounds|List<Tuple of <num,num>>*/ otherBounds);
+  external Point get min;
+  external set min(Point v);
+  external Point get max;
+  external set max(Point v);
 }
+
+/*type BoundsExpression = Bounds | BoundsLiteral;*/
+/*external Bounds bounds(Point topLeft, Point bottomRight);*/
+/*external Bounds bounds(Tuple of <num,num> topLeft, Tuple of <num,num> bottomRight);*/
+/*external Bounds bounds(List<Point> points);*/
+/*external Bounds bounds(List<Tuple of <num,num>> points);*/
+@JS("L.bounds")
+external Bounds bounds(dynamic /*Point|Tuple of <num,num>|List<Point>|List<Tuple of <num,num>>*/ topLeft_points,
+    [dynamic /*Point|Tuple of <num,num>*/ bottomRight]);

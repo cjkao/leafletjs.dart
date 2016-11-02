@@ -2,15 +2,12 @@
 library leafletjs.icon;
 
 import 'dart:html' as html;
-import 'dart:js';
+//import 'dart:js';
 
 import 'package:js/js.dart';
 
 import '../../core/class.dart';
 import '../../geometry/point.dart';
-
-///not compitable
-Icon getDefaultIcon() => new JsObject(context['L']['Icon']['Default'], []) as Icon;
 
 @JS('L.icon')
 class Icon extends IClass {
